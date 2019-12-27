@@ -33,7 +33,6 @@ public class AvoiderWorld extends World
         if (Greenfoot.getRandomNumber(1000) < spawnRate) {
             Enemy enemy =  new  Enemy();
             enemy.setSpeed(speed);
-            enemy.getImage().scale(30, 30);
             addObject(enemy, Greenfoot.getRandomNumber(getWidth() - 20) + 10, START_LINE);
             scoreBoard.add(1);
         }
@@ -58,6 +57,7 @@ public class AvoiderWorld extends World
     {
         backgroundMusic.stop();
         GameOver go =  new  GameOver();
+        go.setFinalScore(scoreBoard.getValue());
         Greenfoot.setWorld(go);
     }
 

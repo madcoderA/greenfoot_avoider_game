@@ -37,7 +37,7 @@
                     <ifStatements>
                         <variable type="Enemy" type-java="Enemy" name="enemy" value="new Enemy()" value-java=" new Enemy()" enable="true"/>
                         <call expression="enemy.setSpeed(speed)" expression-java="enemy.setSpeed(speed)" enable="true"/>
-                        <call expression="enemy.getImage().scale(30,30)" expression-java="enemy.getImage().scale(30, 30)" enable="true"/>
+                        <call expression="enemy.getImage().scale(30,30)" expression-java="enemy.getImage().scale(30, 30)" enable="false"/>
                         <call expression="addObject(enemy,Greenfoot.getRandomNumber(getWidth()-20)+10,START_LINE)" expression-java="addObject(enemy, Greenfoot.getRandomNumber(getWidth() - 20) + 10, START_LINE)" enable="true"/>
                         <call expression="scoreBoard.add(1)" expression-java="scoreBoard.add(1)" enable="true"/>
                     </ifStatements>
@@ -63,6 +63,7 @@ That is: create the initial objects and add them to the world.</javadoc>
             <body>
                 <call expression="backgroundMusic.stop()" expression-java="backgroundMusic.stop()" enable="true"/>
                 <variable type="GameOver" type-java="GameOver" name="go" value="new GameOver()" value-java=" new GameOver()" enable="true"/>
+                <call expression="go.setFinalScore(scoreBoard.getValue())" expression-java="go.setFinalScore(scoreBoard.getValue())" enable="true"/>
                 <call expression="Greenfoot.setWorld(go)" expression-java="Greenfoot.setWorld(go)" enable="true"/>
             </body>
         </method>

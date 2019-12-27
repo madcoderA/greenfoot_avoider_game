@@ -6,14 +6,18 @@
         <import target="greenfoot.*" enable="true"/>
     </imports>
     <implements/>
-    <fields/>
+    <fields>
+        <variable access="private" type="Counter" type-java="Counter" name="finalScore" value="new Counter(&quot;Final Score: &quot;)" value-java=" new Counter(&quot;Final Score: &quot;)" enable="true"/>
+    </fields>
     <constructors>
         <constructor access="public" enable="true">
             <javadoc xml:space="preserve">Constructor for objects of class AvoiderGameOverWorld.</javadoc>
             <params/>
             <throws/>
             <delegate target="super" params="600,400,1" params-java="600, 400, 1"/>
-            <body/>
+            <body>
+                <call expression="prepare()" expression-java="prepare()" enable="true"/>
+            </body>
         </constructor>
     </constructors>
     <methods>
@@ -28,6 +32,27 @@
                         <call expression="Greenfoot.setWorld(world)" expression-java="Greenfoot.setWorld(world)" enable="true"/>
                     </ifStatements>
                 </if>
+            </body>
+        </method>
+        <method access="private" type="void" type-java="void" name="prepare" enable="true">
+            <javadoc xml:space="preserve">Prepare the world for the start of the program.
+That is: create the initial objects and add them to the world.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="addObject(finalScore,131,334)" expression-java="addObject(finalScore, 131, 334)" enable="true"/>
+                <call expression="finalScore.act()" expression-java="finalScore.act()" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="setFinalScore" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params>
+                <param type="int" type-java="int" name="finalScore"/>
+            </params>
+            <throws/>
+            <body>
+                <call expression="this.finalScore.setValue(finalScore)" expression-java="this.finalScore.setValue(finalScore)" enable="true"/>
+                <call expression="this.finalScore.act()" expression-java="this.finalScore.act()" enable="true"/>
             </body>
         </method>
     </methods>

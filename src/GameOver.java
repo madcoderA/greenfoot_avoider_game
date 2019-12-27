@@ -8,6 +8,7 @@ import greenfoot.*;
  */
 public class GameOver extends World
 {
+    private Counter finalScore =  new  Counter("Final Score: ");
 
     /**
      * Constructor for objects of class AvoiderGameOverWorld.
@@ -15,6 +16,7 @@ public class GameOver extends World
     public GameOver()
     {
         super(600, 400, 1);
+        prepare();
     }
 
     /**
@@ -23,8 +25,27 @@ public class GameOver extends World
     public void act()
     {
         if (Greenfoot.mouseClicked(this)) {
-            AvoiderWorld world =  new AvoiderWorld();
+            AvoiderWorld world =  new  AvoiderWorld();
             Greenfoot.setWorld(world);
         }
+    }
+
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        addObject(finalScore, 131, 334);
+        finalScore.act();
+    }
+
+    /**
+     * 
+     */
+    public void setFinalScore(int finalScore)
+    {
+        this.finalScore.setValue(finalScore);
+        this.finalScore.act();
     }
 }
