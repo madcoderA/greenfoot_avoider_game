@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="Avatar" extends="Actor" extends-java="Actor" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields/>
+    <constructors/>
+    <methods>
+        <method access="public" type="void" type-java="void" name="followMouse" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="MouseInfo" type-java="MouseInfo" name="mi" value="Greenfoot.getMouseInfo()" value-java="Greenfoot.getMouseInfo()" enable="true"/>
+                <if condition="mi!=null" condition-java="mi != null" enable="true">
+                    <ifStatements>
+                        <call expression="setLocation(mi.getX(),mi.getY())" expression-java="setLocation(mi.getX(), mi.getY())" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve">Act - do whatever the Avatar wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="followMouse()" expression-java="followMouse()" enable="true"/>
+                <call expression="checkForCollisions()" expression-java="checkForCollisions()" enable="true"/>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="checkForCollisions" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="Actor" type-java="Actor" name="enemy" value="getOneIntersectingObject(Enemy.class)" value-java="getOneIntersectingObject(Enemy.class)" enable="true"/>
+                <if condition="enemy!=null" condition-java="enemy != null" enable="true">
+                    <ifStatements>
+                        <variable type="AvoiderWorld" type-java="AvoiderWorld" name="world" value="(AvoiderWorld)getWorld()" value-java="(AvoiderWorld)getWorld()" enable="true"/>
+                        <call expression="world.endGame()" expression-java="world.endGame()" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+    </methods>
+</class>
