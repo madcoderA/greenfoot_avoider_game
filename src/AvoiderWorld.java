@@ -8,7 +8,7 @@ import greenfoot.*;
  */
 public class AvoiderWorld extends World
 {
-    private GreenfootSound backgroundMusic =  new  GreenfootSound("sounds/TRG_Banks_-_08_-_A_Christmas_adventure_Part_1.mp3");
+    private GreenfootSound backgroundMusic =  new GreenfootSound("sounds/TRG_Banks_-_08_-_A_Christmas_adventure_Part_1.mp3");
     private int spawnRate = 20;
     private int speed = 1;
     private Counter scoreBoard;
@@ -31,7 +31,7 @@ public class AvoiderWorld extends World
     public void act()
     {
         if (Greenfoot.getRandomNumber(1000) < spawnRate) {
-            Enemy enemy =  new  Enemy();
+            Enemy enemy =  new Enemy();
             enemy.setSpeed(speed);
             addObject(enemy, Greenfoot.getRandomNumber(getWidth() - 20) + 10, START_LINE);
             scoreBoard.add(1);
@@ -44,9 +44,9 @@ public class AvoiderWorld extends World
      */
     private void prepare()
     {
-        Avatar avatar =  new  Avatar();
+        Avatar avatar =  new Avatar();
         addObject(avatar, 287, 232);
-        scoreBoard =  new  Counter("Score: ");
+        scoreBoard =  new Counter("Score: ");
         addObject(scoreBoard, 70, 20);
     }
 
@@ -56,7 +56,7 @@ public class AvoiderWorld extends World
     public void endGame()
     {
         backgroundMusic.stop();
-        GameOver go =  new  GameOver();
+        GameOver go =  new GameOver();
         go.setFinalScore(scoreBoard.getValue());
         Greenfoot.setWorld(go);
     }
