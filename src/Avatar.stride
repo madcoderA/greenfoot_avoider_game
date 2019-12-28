@@ -7,6 +7,8 @@
     </imports>
     <implements/>
     <fields>
+        <variable access="private" type="int" type-java="int" name="hitDelay" value="50" value-java="50" enable="true"/>
+        <variable access="private" type="int" type-java="int" name="nextImage" value="0" value-java="0" enable="true"/>
         <variable access="private" type="int" type-java="int" name="health" value="3" value-java="3" enable="true"/>
     </fields>
     <constructors/>
@@ -39,10 +41,25 @@
             <throws/>
             <body>
                 <variable type="Actor" type-java="Actor" name="enemy" value="getOneIntersectingObject(Enemy.class)" value-java="getOneIntersectingObject(Enemy.class)" enable="true"/>
-                <if condition="enemy!=null" condition-java="enemy != null" enable="true">
+                <if condition="hitDelay==0&amp;&amp;enemy!=null" condition-java="hitDelay == 0 &amp;&amp; enemy != null" enable="true">
                     <ifStatements>
-                        <variable type="AvoiderWorld" type-java="AvoiderWorld" name="world" value="(AvoiderWorld)getWorld()" value-java="(AvoiderWorld)getWorld()" enable="true"/>
-                        <call expression="world.endGame()" expression-java="world.endGame()" enable="true"/>
+                        <if condition="health==0" condition-java="health == 0" enable="true">
+                            <ifStatements>
+                                <variable type="AvoiderWorld" type-java="AvoiderWorld" name="world" value="(AvoiderWorld)getWorld()" value-java="(AvoiderWorld)getWorld()" enable="true"/>
+                                <call expression="world.endGame()" expression-java="world.endGame()" enable="true"/>
+                            </ifStatements>
+                            <else>
+                                <assign dest="health" dest-java="health" src="health-1" src-java="health - 1" enable="true"/>
+                                <assign dest="nextImage" dest-java="nextImage" src="nextImage+1" src-java="nextImage + 1" enable="true"/>
+                                <call expression="setImage(&quot;skull&quot;+nextImage+&quot;.png&quot;)" expression-java="setImage(&quot;skull&quot; + nextImage + &quot;.png&quot;)" enable="true"/>
+                                <assign dest="hitDelay" dest-java="hitDelay" src="50" src-java="50" enable="true"/>
+                            </else>
+                        </if>
+                    </ifStatements>
+                </if>
+                <if condition="hitDelay&gt;0" condition-java="hitDelay &gt; 0" enable="true">
+                    <ifStatements>
+                        <assign dest="hitDelay" dest-java="hitDelay" src="hitDelay-1" src-java="hitDelay - 1" enable="true"/>
                     </ifStatements>
                 </if>
             </body>

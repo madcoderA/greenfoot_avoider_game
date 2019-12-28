@@ -8,8 +8,8 @@ import greenfoot.*;
  */
 public class GameOver extends World
 {
-    private GreenfootSound backgroundMusic =  new  GreenfootSound("Disaster.mp3");
-    private Counter finalScore =  new  Counter("Final Score: ");
+    private GreenfootSound backgroundMusic =  new GreenfootSound("Disaster.mp3");
+    private Counter finalScore =  new Counter("Final Score: ");
 
     /**
      * Constructor for objects of class AvoiderGameOverWorld.
@@ -28,7 +28,7 @@ public class GameOver extends World
     {
         if (Greenfoot.mouseClicked(this)) {
             backgroundMusic.stop();
-            AvoiderWorld world =  new  AvoiderWorld();
+            AvoiderWorld world =  new AvoiderWorld();
             Greenfoot.setWorld(world);
         }
     }

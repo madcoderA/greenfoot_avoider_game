@@ -8,6 +8,8 @@ import greenfoot.*;
  */
 public class Avatar extends Actor
 {
+    private int hitDelay = 50;
+    private int nextImage = 0;
     private int health = 3;
 
     /**
@@ -36,9 +38,20 @@ public class Avatar extends Actor
     public void checkForCollisions()
     {
         Actor enemy = getOneIntersectingObject(Enemy.class);
-        if (enemy != null) {
-            AvoiderWorld world = (AvoiderWorld)getWorld();
-            world.endGame();
+        if (hitDelay == 0 && enemy != null) {
+            if (health == 0) {
+                AvoiderWorld world = (AvoiderWorld)getWorld();
+                world.endGame();
+            }
+            else {
+                health = health - 1;
+                nextImage = nextImage + 1;
+                setImage("skull" + nextImage + ".png");
+                hitDelay = 50;
+            }
+        }
+        if (hitDelay > 0) {
+            hitDelay = hitDelay - 1;
         }
     }
 }
