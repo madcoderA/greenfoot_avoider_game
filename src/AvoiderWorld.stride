@@ -8,7 +8,7 @@
     </imports>
     <implements/>
     <fields>
-        <variable access="private" type="GreenfootSound" type-java="GreenfootSound" name="backgroundMusic" value="new GreenfootSound(&quot;Space-warning.mp3&quot;)" value-java=" new GreenfootSound(&quot;Space-warning.mp3&quot;)" enable="true"/>
+        <variable access="private" type="GreenfootSound" type-java="GreenfootSound" name="backgroundMusic" value="new GreenfootSound(&quot;UFO-on-the-streets.mp3&quot;)" value-java=" new GreenfootSound(&quot;UFO-on-the-streets.mp3&quot;)" enable="true"/>
         <variable access="private" type="int" type-java="int" name="spawnRate" value="20" value-java="20" enable="true"/>
         <variable access="private" type="int" type-java="int" name="speed" value="1" value-java="1" enable="true"/>
         <variable access="private" type="Counter" type-java="Counter" name="scoreBoard" enable="true"/>
