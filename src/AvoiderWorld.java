@@ -8,7 +8,7 @@ import greenfoot.*;
  */
 public class AvoiderWorld extends World
 {
-    private GreenfootSound backgroundMusic =  new GreenfootSound("Space-warning.mp3");
+    private GreenfootSound backgroundMusic =  new  GreenfootSound("Space-warning.mp3");
     private int spawnRate = 20;
     private int speed = 1;
     private Counter scoreBoard;
@@ -21,7 +21,7 @@ public class AvoiderWorld extends World
     public AvoiderWorld()
     {
         super(600, 400, 1, false);
-        setPaintOrder(Avatar.class, Enemy.class, Counter.class);
+        setPaintOrder(Eye.class, Avatar.class, Enemy.class, Counter.class);
         backgroundMusic.playLoop();
         generateInitialStarField();
         prepare();
@@ -55,7 +55,7 @@ public class AvoiderWorld extends World
     public void generateEnemies()
     {
         if (Greenfoot.getRandomNumber(1000) < spawnRate) {
-            Enemy enemy =  new Enemy();
+            Enemy enemy =  new  Enemy();
             enemy.setSpeed(speed);
             addObject(enemy, Greenfoot.getRandomNumber(getWidth() - 20) + 10, START_LINE);
             scoreBoard.add(1);
@@ -68,7 +68,7 @@ public class AvoiderWorld extends World
     private void generateStars(int yLoc)
     {
         if (Greenfoot.getRandomNumber(1000) < 350) {
-            Star s =  new Star();
+            Star s =  new  Star();
             GreenfootImage image = s.getImage();
             if (Greenfoot.getRandomNumber(1000) < 300) {
                 /* this is a close bright star*/
@@ -93,9 +93,9 @@ public class AvoiderWorld extends World
      */
     private void prepare()
     {
-        Avatar avatar =  new Avatar();
+        Avatar avatar =  new  Avatar();
         addObject(avatar, 287, 232);
-        scoreBoard =  new Counter("Score: ");
+        scoreBoard =  new  Counter("Score: ");
         addObject(scoreBoard, 70, 20);
     }
 
@@ -105,7 +105,7 @@ public class AvoiderWorld extends World
     public void endGame()
     {
         backgroundMusic.stop();
-        GameOver go =  new GameOver();
+        GameOver go =  new  GameOver();
         go.setFinalScore(scoreBoard.getValue());
         Greenfoot.setWorld(go);
     }

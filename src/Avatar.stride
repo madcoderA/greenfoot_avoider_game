@@ -10,6 +10,8 @@
         <variable access="private" type="int" type-java="int" name="hitDelay" value="50" value-java="50" enable="true"/>
         <variable access="private" type="int" type-java="int" name="nextImage" value="0" value-java="0" enable="true"/>
         <variable access="private" type="int" type-java="int" name="health" value="3" value-java="3" enable="true"/>
+        <variable access="private" type="Eye" type-java="Eye" name="leftEye" enable="true"/>
+        <variable access="private" type="Eye" type-java="Eye" name="rightEye" enable="true"/>
     </fields>
     <constructors/>
     <methods>
@@ -22,6 +24,8 @@
                 <if condition="mi!=null" condition-java="mi != null" enable="true">
                     <ifStatements>
                         <call expression="setLocation(mi.getX(),mi.getY())" expression-java="setLocation(mi.getX(), mi.getY())" enable="true"/>
+                        <call expression="leftEye.setLocation(getX()-10,getY()-8)" expression-java="leftEye.setLocation(getX() - 10, getY() - 8)" enable="true"/>
+                        <call expression="rightEye.setLocation(getX()+10,getY()-8)" expression-java="rightEye.setLocation(getX() + 10, getY() - 8)" enable="true"/>
                     </ifStatements>
                 </if>
             </body>
@@ -62,6 +66,19 @@
                         <assign dest="hitDelay" dest-java="hitDelay" src="hitDelay-1" src-java="hitDelay - 1" enable="true"/>
                     </ifStatements>
                 </if>
+            </body>
+        </method>
+        <method access="protected" type="void" type-java="void" name="addedToWorld" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params>
+                <param type="World" type-java="World" name="w"/>
+            </params>
+            <throws/>
+            <body>
+                <assign dest="leftEye" dest-java="leftEye" src="new Eye()" src-java=" new Eye()" enable="true"/>
+                <assign dest="rightEye" dest-java="rightEye" src="new Eye()" src-java=" new Eye()" enable="true"/>
+                <call expression="w.addObject(leftEye,getX()-10,getY()-8)" expression-java="w.addObject(leftEye, getX() - 10, getY() - 8)" enable="true"/>
+                <call expression="w.addObject(rightEye,getX()+10,getY()-8)" expression-java="w.addObject(rightEye, getX() + 10, getY() - 8)" enable="true"/>
             </body>
         </method>
     </methods>

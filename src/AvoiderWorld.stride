@@ -22,7 +22,7 @@
             <throws/>
             <delegate target="super" params="600,400,1,false" params-java="600, 400, 1, false"/>
             <body>
-                <call expression="setPaintOrder(Avatar.class,Enemy.class,Counter.class)" expression-java="setPaintOrder(Avatar.class, Enemy.class, Counter.class)" enable="true"/>
+                <call expression="setPaintOrder(Eye.class,Avatar.class,Enemy.class,Counter.class)" expression-java="setPaintOrder(Eye.class, Avatar.class, Enemy.class, Counter.class)" enable="true"/>
                 <call expression="backgroundMusic.playLoop()" expression-java="backgroundMusic.playLoop()" enable="true"/>
                 <call expression="generateInitialStarField()" expression-java="generateInitialStarField()" enable="true"/>
                 <call expression="prepare()" expression-java="prepare()" enable="true"/>
