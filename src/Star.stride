@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="Star" extends="Actor" extends-java="Actor" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields>
+        <variable access="private" type="int" type-java="int" name="speed" value="1" value-java="1" enable="true"/>
+    </fields>
+    <constructors>
+        <constructor access="public" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="GreenfootImage" type-java="GreenfootImage" name="img" value="new GreenfootImage(10,10)" value-java=" new GreenfootImage(10, 10)" enable="true"/>
+                <call expression="img.setColor(Color.WHITE)" expression-java="img.setColor(Color.WHITE)" enable="true"/>
+                <call expression="img.fillOval(0,0,10,10)" expression-java="img.fillOval(0, 0, 10, 10)" enable="true"/>
+                <call expression="setImage(img)" expression-java="setImage(img)" enable="true"/>
+            </body>
+        </constructor>
+    </constructors>
+    <methods>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <call expression="setLocation(getX(),getY()+speed)" expression-java="setLocation(getX(), getY() + speed)" enable="true"/>
+                <call expression="checkRemove()" expression-java="checkRemove()" enable="true"/>
+            </body>
+        </method>
+        <method access="private" type="void" type-java="void" name="checkRemove" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="World" type-java="World" name="w" value="getWorld()" value-java="getWorld()" enable="true"/>
+                <if condition="getY()&gt;w.getHeight()+30" condition-java="getY() &gt; w.getHeight() + 30" enable="true">
+                    <ifStatements>
+                        <call expression="w.removeObject(this)" expression-java="w.removeObject(this)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="setSpeed" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params>
+                <param type="int" type-java="int" name="s"/>
+            </params>
+            <throws/>
+            <body>
+                <assign dest="speed" dest-java="speed" src="s" src-java="s" enable="true"/>
+            </body>
+        </method>
+    </methods>
+</class>
