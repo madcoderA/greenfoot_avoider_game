@@ -55,12 +55,12 @@ public abstract class PowerItems extends SmoothMover
     /**
      * 
      */
-    abstract double curveX(double f);
+    abstract double curveX();
 
     /**
      * 
      */
-    abstract double curveY(double f);
+    abstract double curveY();
 
     /**
      * 

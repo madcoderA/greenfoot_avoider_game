@@ -83,7 +83,16 @@ public class Avatar extends Actor
      */
     public void addHealth()
     {
-        /* TO-DO Implement the method*/
+        if (health < 3) {
+            health = health + 1;
+            nextImage = nextImage - 1;
+            if (nextImage == 0) {
+                setImage("skull.png");
+            }
+            else {
+                setImage("skull" + nextImage + ".png");
+            }
+        }
     }
 
     /**

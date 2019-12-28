@@ -94,7 +94,20 @@
             <params/>
             <throws/>
             <body>
-                <comment xml:space="preserve">TO-DO Implement the method</comment>
+                <if condition="health&lt;3" condition-java="health &lt; 3" enable="true">
+                    <ifStatements>
+                        <assign dest="health" dest-java="health" src="health+1" src-java="health + 1" enable="true"/>
+                        <assign dest="nextImage" dest-java="nextImage" src="nextImage-1" src-java="nextImage - 1" enable="true"/>
+                        <if condition="nextImage==0" condition-java="nextImage == 0" enable="true">
+                            <ifStatements>
+                                <call expression="setImage(&quot;skull.png&quot;)" expression-java="setImage(&quot;skull.png&quot;)" enable="true"/>
+                            </ifStatements>
+                            <else>
+                                <call expression="setImage(&quot;skull&quot;+nextImage+&quot;.png&quot;)" expression-java="setImage(&quot;skull&quot; + nextImage + &quot;.png&quot;)" enable="true"/>
+                            </else>
+                        </if>
+                    </ifStatements>
+                </if>
             </body>
         </method>
         <method access="public" type="void" type-java="void" name="stun" enable="true">
