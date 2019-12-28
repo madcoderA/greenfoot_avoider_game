@@ -8,6 +8,7 @@ import greenfoot.*;
  */
 public class Avatar extends Actor
 {
+    private int health = 3;
 
     /**
      * 

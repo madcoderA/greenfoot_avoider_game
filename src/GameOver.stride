@@ -7,6 +7,7 @@
     </imports>
     <implements/>
     <fields>
+        <variable access="private" type="GreenfootSound" type-java="GreenfootSound" name="backgroundMusic" value="new GreenfootSound(&quot;Disaster.mp3&quot;)" value-java=" new GreenfootSound(&quot;Disaster.mp3&quot;)" enable="true"/>
         <variable access="private" type="Counter" type-java="Counter" name="finalScore" value="new Counter(&quot;Final Score: &quot;)" value-java=" new Counter(&quot;Final Score: &quot;)" enable="true"/>
     </fields>
     <constructors>
@@ -17,6 +18,7 @@
             <delegate target="super" params="600,400,1" params-java="600, 400, 1"/>
             <body>
                 <call expression="prepare()" expression-java="prepare()" enable="true"/>
+                <call expression="backgroundMusic.playLoop()" expression-java="backgroundMusic.playLoop()" enable="true"/>
             </body>
         </constructor>
     </constructors>
@@ -28,6 +30,7 @@
             <body>
                 <if condition="Greenfoot.mouseClicked(this)" condition-java="Greenfoot.mouseClicked(this)" enable="true">
                     <ifStatements>
+                        <call expression="backgroundMusic.stop()" expression-java="backgroundMusic.stop()" enable="true"/>
                         <variable type="AvoiderWorld" type-java="AvoiderWorld" name="world" value="new AvoiderWorld()" value-java=" new AvoiderWorld()" enable="true"/>
                         <call expression="Greenfoot.setWorld(world)" expression-java="Greenfoot.setWorld(world)" enable="true"/>
                     </ifStatements>

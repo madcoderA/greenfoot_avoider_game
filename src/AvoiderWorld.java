@@ -8,7 +8,7 @@ import greenfoot.*;
  */
 public class AvoiderWorld extends World
 {
-    private GreenfootSound backgroundMusic =  new  GreenfootSound("sounds/TRG_Banks_-_08_-_A_Christmas_adventure_Part_1.mp3");
+    private GreenfootSound backgroundMusic =  new  GreenfootSound("Space-warning.mp3");
     private int spawnRate = 20;
     private int speed = 1;
     private Counter scoreBoard;
