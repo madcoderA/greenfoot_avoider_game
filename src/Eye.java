@@ -30,7 +30,7 @@ public class Eye extends Actor
      */
     private void drawEye(int dx, int dy)
     {
-        GreenfootImage img =  new  GreenfootImage(10, 10);
+        GreenfootImage img =  new GreenfootImage(10, 10);
         img.setColor(Color.WHITE);
         img.fillOval(0, 0, 10, 10);
         img.setColor(Color.BLACK);
