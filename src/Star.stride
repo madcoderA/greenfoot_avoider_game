@@ -7,7 +7,9 @@
     </imports>
     <implements/>
     <fields>
-        <variable access="private" type="int" type-java="int" name="speed" value="1" value-java="1" enable="true"/>
+        <variable access="protected" type="int" type-java="int" name="twinkleTime" value="0" value-java="0" enable="true"/>
+        <variable access="protected" type="int" type-java="int" name="currentTransparency" value="0" value-java="0" enable="true"/>
+        <variable access="" type="int" type-java="int" name="speed" value="1" value-java="1" enable="true"/>
     </fields>
     <constructors>
         <constructor access="public" enable="true">
@@ -30,6 +32,7 @@
             <body>
                 <call expression="setLocation(getX(),getY()+speed)" expression-java="setLocation(getX(), getY() + speed)" enable="true"/>
                 <call expression="checkRemove()" expression-java="checkRemove()" enable="true"/>
+                <call expression="checkTwinkle()" expression-java="checkTwinkle()" enable="true"/>
             </body>
         </method>
         <method access="private" type="void" type-java="void" name="checkRemove" enable="true">
@@ -53,6 +56,33 @@
             <throws/>
             <body>
                 <assign dest="speed" dest-java="speed" src="s" src-java="s" enable="true"/>
+            </body>
+        </method>
+        <method access="private" type="void" type-java="void" name="checkTwinkle" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="GreenfootImage" type-java="GreenfootImage" name="img" value="getImage()" value-java="getImage()" enable="true"/>
+                <if condition="twinkleTime&gt;0" condition-java="twinkleTime &gt; 0" enable="true">
+                    <ifStatements>
+                        <if condition="twinkleTime==1" condition-java="twinkleTime == 1" enable="true">
+                            <ifStatements>
+                                <call expression="img.setTransparency(currentTransparency)" expression-java="img.setTransparency(currentTransparency)" enable="true"/>
+                            </ifStatements>
+                        </if>
+                        <assign dest="twinkleTime" dest-java="twinkleTime" src="twinkleTime-1" src-java="twinkleTime - 1" enable="true"/>
+                    </ifStatements>
+                    <else>
+                        <if condition="Greenfoot.getRandomNumber(10000)&lt;10" condition-java="Greenfoot.getRandomNumber(10000) &lt; 10" enable="true">
+                            <ifStatements>
+                                <assign dest="twinkleTime" dest-java="twinkleTime" src="10" src-java="10" enable="true"/>
+                                <assign dest="currentTransparency" dest-java="currentTransparency" src="img.getTransparency()" src-java="img.getTransparency()" enable="true"/>
+                                <call expression="img.setTransparency(0)" expression-java="img.setTransparency(0)" enable="true"/>
+                            </ifStatements>
+                        </if>
+                    </else>
+                </if>
             </body>
         </method>
     </methods>
