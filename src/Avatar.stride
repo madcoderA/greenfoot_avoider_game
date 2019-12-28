@@ -81,5 +81,29 @@
                 <call expression="w.addObject(rightEye,getX()+10,getY()-8)" expression-java="w.addObject(rightEye, getX() + 10, getY() - 8)" enable="true"/>
             </body>
         </method>
+        <method access="public" type="void" type-java="void" name="lagControls" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <comment xml:space="preserve">TO-DO Implement the method</comment>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="addHealth" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <comment xml:space="preserve">TO-DO Implement the method</comment>
+            </body>
+        </method>
+        <method access="public" type="void" type-java="void" name="stun" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <comment xml:space="preserve">TO-DO Implement the method</comment>
+            </body>
+        </method>
     </methods>
 </class>

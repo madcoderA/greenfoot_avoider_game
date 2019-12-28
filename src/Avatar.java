@@ -64,9 +64,33 @@ public class Avatar extends Actor
      */
     protected void addedToWorld(World w)
     {
-        leftEye =  new Eye();
-        rightEye =  new Eye();
+        leftEye =  new  Eye();
+        rightEye =  new  Eye();
         w.addObject(leftEye, getX() - 10, getY() - 8);
         w.addObject(rightEye, getX() + 10, getY() - 8);
+    }
+
+    /**
+     * 
+     */
+    public void lagControls()
+    {
+        /* TO-DO Implement the method*/
+    }
+
+    /**
+     * 
+     */
+    public void addHealth()
+    {
+        /* TO-DO Implement the method*/
+    }
+
+    /**
+     * 
+     */
+    public void stun()
+    {
+        /* TO-DO Implement the method*/
     }
 }

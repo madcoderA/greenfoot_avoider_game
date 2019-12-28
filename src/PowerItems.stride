@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class abstract="true" name="PowerItems" extends="SmoothMover" extends-java="SmoothMover" enable="true" strideversion="1">
-    <javadoc xml:space="preserve"/>
+    <javadoc xml:space="preserve">The class contain all the common code for easing and being a power item (power-up or power-down.)</javadoc>
     <imports>
         <import target="java.util.*" enable="true"/>
         <import target="greenfoot.*" enable="true"/>
     </imports>
     <implements/>
     <fields>
+        <comment xml:space="preserve">track the ending coordinates</comment>
         <variable access="protected" type="double" type-java="double" name="targetX" enable="true"/>
         <variable access="protected" type="double" type-java="double" name="targetY" enable="true"/>
+        <comment xml:space="preserve">The instance variable expireTime specifies how many calls of the act() method this actor should execute before removing itself. In other words, it specifies the lifespan of the actor.</comment>
         <variable access="protected" type="double" type-java="double" name="expireTime" enable="true"/>
+        <comment xml:space="preserve">track the starting coordinates</comment>
         <variable access="protected" type="double" type-java="double" name="origX" enable="true"/>
         <variable access="protected" type="double" type-java="double" name="origY" enable="true"/>
+        <comment xml:space="preserve">The duration instance variable simply saves the initial value of expireTime. The expireTime variable is continually decremented until it reaches a value of 0, but we need to know its original value for our easing equations.</comment>
         <variable access="protected" type="double" type-java="double" name="duration" enable="true"/>
+        <comment xml:space="preserve">The counter variable records how many times this actor
+has moved.</comment>
         <variable access="protected" type="int" type-java="int" name="counter" enable="true"/>
     </fields>
     <constructors>

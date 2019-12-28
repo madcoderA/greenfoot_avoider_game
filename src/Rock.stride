@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="Rock" extends="PowerItems" extends-java="PowerItems" enable="true" strideversion="1">
+    <javadoc xml:space="preserve"/>
+    <imports>
+        <import target="java.util.*" enable="true"/>
+        <import target="greenfoot.*" enable="true"/>
+    </imports>
+    <implements/>
+    <fields/>
+    <constructors>
+        <constructor access="public" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params>
+                <param type="int" type-java="int" name="tX"/>
+                <param type="int" type-java="int" name="tY"/>
+                <param type="int" type-java="int" name="eT"/>
+            </params>
+            <throws/>
+            <delegate target="super" params="tX,tY,eT" params-java="tX, tY, eT"/>
+            <body/>
+        </constructor>
+    </constructors>
+    <methods>
+        <method access="public" type="void" type-java="void" name="act" enable="true">
+            <javadoc xml:space="preserve">Act - do whatever the Rock wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
+            <params/>
+            <throws/>
+            <body/>
+        </method>
+        <method access="protected" type="double" type-java="double" name="curveX" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params>
+                <param type="double" type-java="double" name="f"/>
+            </params>
+            <throws/>
+            <body>
+                <return value="f" value-java="f" enable="true"/>
+            </body>
+        </method>
+        <method access="protected" type="double" type-java="double" name="curveY" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params>
+                <param type="double" type-java="double" name="f"/>
+            </params>
+            <throws/>
+            <body>
+                <return value="f*f*f" value-java="f * f * f" enable="true"/>
+            </body>
+        </method>
+        <method access="protected" type="void" type-java="void" name="checkHitAvatar" enable="true">
+            <javadoc xml:space="preserve"/>
+            <params/>
+            <throws/>
+            <body>
+                <variable type="Avatar" type-java="Avatar" name="a" value="(Avatar)getOneIntersectingObject(Avatar.class)" value-java="(Avatar)getOneIntersectingObject(Avatar.class)" enable="true"/>
+                <if condition="a!=null" condition-java="a != null" enable="true">
+                    <ifStatements>
+                        <call expression="a.addHealth()" expression-java="a.addHealth()" enable="true"/>
+                        <call expression="getWorld().removeObject(this)" expression-java="getWorld().removeObject(this)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
+        </method>
+    </methods>
+</class>
