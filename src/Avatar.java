@@ -13,17 +13,23 @@ public class Avatar extends Actor
     private int health = 3;
     private Eye leftEye;
     private Eye rightEye;
+    private int stunTime = 0;
 
     /**
      * 
      */
     public void followMouse()
     {
-        MouseInfo mi = Greenfoot.getMouseInfo();
-        if (mi != null) {
-            setLocation(mi.getX(), mi.getY());
-            leftEye.setLocation(getX() - 10, getY() - 8);
-            rightEye.setLocation(getX() + 10, getY() - 8);
+        if (stunTime > 0) {
+            stunTime = stunTime - 1;
+        }
+        else {
+            MouseInfo mi = Greenfoot.getMouseInfo();
+            if (mi != null) {
+                setLocation(mi.getX(), mi.getY());
+                leftEye.setLocation(getX() - 10, getY() - 8);
+                rightEye.setLocation(getX() + 10, getY() - 8);
+            }
         }
     }
 
@@ -100,6 +106,6 @@ public class Avatar extends Actor
      */
     public void stun()
     {
-        /* TO-DO Implement the method*/
+        stunTime = stunTime + 30;
     }
 }

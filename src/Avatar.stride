@@ -12,6 +12,7 @@
         <variable access="private" type="int" type-java="int" name="health" value="3" value-java="3" enable="true"/>
         <variable access="private" type="Eye" type-java="Eye" name="leftEye" enable="true"/>
         <variable access="private" type="Eye" type-java="Eye" name="rightEye" enable="true"/>
+        <variable access="private" type="int" type-java="int" name="stunTime" value="0" value-java="0" enable="true"/>
     </fields>
     <constructors/>
     <methods>
@@ -20,13 +21,20 @@
             <params/>
             <throws/>
             <body>
-                <variable type="MouseInfo" type-java="MouseInfo" name="mi" value="Greenfoot.getMouseInfo()" value-java="Greenfoot.getMouseInfo()" enable="true"/>
-                <if condition="mi!=null" condition-java="mi != null" enable="true">
+                <if condition="stunTime&gt;0" condition-java="stunTime &gt; 0" enable="true">
                     <ifStatements>
-                        <call expression="setLocation(mi.getX(),mi.getY())" expression-java="setLocation(mi.getX(), mi.getY())" enable="true"/>
-                        <call expression="leftEye.setLocation(getX()-10,getY()-8)" expression-java="leftEye.setLocation(getX() - 10, getY() - 8)" enable="true"/>
-                        <call expression="rightEye.setLocation(getX()+10,getY()-8)" expression-java="rightEye.setLocation(getX() + 10, getY() - 8)" enable="true"/>
+                        <assign dest="stunTime" dest-java="stunTime" src="stunTime-1" src-java="stunTime - 1" enable="true"/>
                     </ifStatements>
+                    <else>
+                        <variable type="MouseInfo" type-java="MouseInfo" name="mi" value="Greenfoot.getMouseInfo()" value-java="Greenfoot.getMouseInfo()" enable="true"/>
+                        <if condition="mi!=null" condition-java="mi != null" enable="true">
+                            <ifStatements>
+                                <call expression="setLocation(mi.getX(),mi.getY())" expression-java="setLocation(mi.getX(), mi.getY())" enable="true"/>
+                                <call expression="leftEye.setLocation(getX()-10,getY()-8)" expression-java="leftEye.setLocation(getX() - 10, getY() - 8)" enable="true"/>
+                                <call expression="rightEye.setLocation(getX()+10,getY()-8)" expression-java="rightEye.setLocation(getX() + 10, getY() - 8)" enable="true"/>
+                            </ifStatements>
+                        </if>
+                    </else>
                 </if>
             </body>
         </method>
@@ -115,7 +123,7 @@
             <params/>
             <throws/>
             <body>
-                <comment xml:space="preserve">TO-DO Implement the method</comment>
+                <assign dest="stunTime" dest-java="stunTime" src="stunTime+30" src-java="stunTime + 30" enable="true"/>
             </body>
         </method>
     </methods>
