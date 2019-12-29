@@ -1,4 +1,3 @@
-import java.util.*;
 import greenfoot.*;
 
 public class GameOver extends World

@@ -1,4 +1,3 @@
-import java.util.*;
 import greenfoot.*;
 
 public class Star extends Actor

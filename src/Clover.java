@@ -1,10 +1,5 @@
-import java.util.*;
 import java.lang.Math;
-import greenfoot.*;
 
-/**
- * 
- */
 public class Clover extends PowerItems
 {
     public Clover(int tX, int tY, int eT)

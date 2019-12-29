@@ -1,4 +1,3 @@
-import java.util.*;
 import greenfoot.*;
 
 public class Avatar extends Actor
@@ -16,8 +15,10 @@ public class Avatar extends Actor
         MouseInfo mi = Greenfoot.getMouseInfo();
         if (mi != null) {
             if (lagDelay > 0) {
+                final int stepX = (mi.getX() - getX()) / 40;
+                final int stepY = (mi.getY() - getY()) / 40;
+                setLocation(stepX + getX(), stepY + getY());
                 --lagDelay;
-                setLocation((getX() + mi.getX())/2, (getY()+mi.getY())/2);
             } else setLocation(mi.getX(), mi.getY());
             leftEye.setLocation(getX() - 10, getY() - 8);
             rightEye.setLocation(getX() + 10, getY() - 8);

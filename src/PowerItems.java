@@ -1,4 +1,3 @@
-import java.util.*;
 import greenfoot.*;
 
 /**
@@ -9,12 +8,15 @@ public abstract class PowerItems extends SmoothMover
     /* track the ending coordinates*/
     protected double targetX;
     protected double targetY;
-    /* The instance variable expireTime specifies how many calls of the act() method this actor should execute before removing itself. In other words, it specifies the lifespan of the actor.*/
+    /* The instance variable expireTime specifies how many calls of the act() method this actor 
+       should execute before removing itself. In other words, it specifies the lifespan of the actor.*/
     protected double expireTime;
     /* track the starting coordinates*/
     protected double origX;
     protected double origY;
-    /* The duration instance variable simply saves the initial value of expireTime. The expireTime variable is continually decremented until it reaches a value of 0, but we need to know its original value for our easing equations.*/
+    /* The duration instance variable simply saves the initial value of expireTime. The expireTime 
+       variable is continually decremented until it reaches a value of 0, but we need to know its 
+       original value for our easing equations.*/
     protected double duration;
     /* The counter variable records how many times this actorhas moved.*/
     protected int counter;

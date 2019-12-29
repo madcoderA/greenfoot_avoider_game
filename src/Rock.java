@@ -1,5 +1,3 @@
-import greenfoot.*;
-
 public class Rock extends PowerItems
 {
     public Rock(int tX, int tY, int eT)
