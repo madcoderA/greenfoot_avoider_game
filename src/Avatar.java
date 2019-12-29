@@ -1,35 +1,26 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
-import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
 
-/**
- * 
- */
 public class Avatar extends Actor
 {
     private int hitDelay = 50;
     private int nextImage = 0;
     private int health = 3;
+    private int stunTime = 0;
+    private int lagTime = 0;
     private Eye leftEye;
     private Eye rightEye;
-    private int stunTime = 0;
 
-    /**
-     * 
-     */
     public void followMouse()
     {
-        if (stunTime > 0) {
-            stunTime = stunTime - 1;
-        }
-        else {
-            MouseInfo mi = Greenfoot.getMouseInfo();
-            if (mi != null) {
-                setLocation(mi.getX(), mi.getY());
-                leftEye.setLocation(getX() - 10, getY() - 8);
-                rightEye.setLocation(getX() + 10, getY() - 8);
-            }
+        MouseInfo mi = Greenfoot.getMouseInfo();
+        if (mi != null) {
+            if (lagTime > 0) {
+                --lagTime;
+                setLocation((getX() + mi.getX())/2, (getY()+mi.getY())/2);
+            } else setLocation(mi.getX(), mi.getY());
+            leftEye.setLocation(getX() - 10, getY() - 8);
+            rightEye.setLocation(getX() + 10, getY() - 8);
         }
     }
 
@@ -38,13 +29,11 @@ public class Avatar extends Actor
      */
     public void act()
     {
-        followMouse();
+        if (stunTime > 0) --stunTime;
+        else followMouse();
         checkForCollisions();
     }
 
-    /**
-     * 
-     */
     public void checkForCollisions()
     {
         Actor enemy = getOneIntersectingObject(Enemy.class);
@@ -54,20 +43,17 @@ public class Avatar extends Actor
                 world.endGame();
             }
             else {
-                health = health - 1;
-                nextImage = nextImage + 1;
+                --health;
+                ++nextImage;
                 setImage("skull" + nextImage + ".png");
                 hitDelay = 50;
             }
         }
         if (hitDelay > 0) {
-            hitDelay = hitDelay - 1;
+            --hitDelay;
         }
     }
 
-    /**
-     * 
-     */
     protected void addedToWorld(World w)
     {
         leftEye =  new Eye();
@@ -76,22 +62,16 @@ public class Avatar extends Actor
         w.addObject(rightEye, getX() + 10, getY() - 8);
     }
 
-    /**
-     * 
-     */
     public void lagControls()
     {
-        /* TO-DO Implement the method*/
+        lagTime += 50;
     }
 
-    /**
-     * 
-     */
     public void addHealth()
     {
         if (health < 3) {
-            health = health + 1;
-            nextImage = nextImage - 1;
+            ++health;
+            --nextImage;
             if (nextImage == 0) {
                 setImage("skull.png");
             }
@@ -101,11 +81,8 @@ public class Avatar extends Actor
         }
     }
 
-    /**
-     * 
-     */
     public void stun()
     {
-        stunTime = stunTime + 30;
+        stunTime += 30;
     }
 }
