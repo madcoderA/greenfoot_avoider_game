@@ -1,4 +1,3 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
 import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
@@ -55,12 +54,12 @@ public abstract class PowerItems extends SmoothMover
     /**
      * 
      */
-    abstract double curveX();
+    abstract double curveX(double f);
 
     /**
      * 
      */
-    abstract double curveY();
+    abstract double curveY(double f);
 
     /**
      * 
