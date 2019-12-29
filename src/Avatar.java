@@ -51,6 +51,8 @@ public class Avatar extends Actor
         }
         if (hitDelay > 0) {
             --hitDelay;
+            if (hitDelay % 10 == 0) getImage().setTransparency(255);
+            else if (hitDelay % 10 == 5) getImage().setTransparency(100);
         }
     }
 
