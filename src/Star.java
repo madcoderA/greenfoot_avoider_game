@@ -1,20 +1,12 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
-import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
 
-/**
- * 
- */
 public class Star extends Actor
 {
     protected int twinkleTime = 0;
     protected int currentTransparency = 0;
-     int speed = 1;
+    int speed = 1;
 
-    /**
-     * 
-     */
     public Star()
     {
         GreenfootImage img =  new GreenfootImage(10, 10);
@@ -23,9 +15,6 @@ public class Star extends Actor
         setImage(img);
     }
 
-    /**
-     * 
-     */
     public void act()
     {
         setLocation(getX(), getY() + speed);
@@ -33,9 +22,6 @@ public class Star extends Actor
         checkTwinkle();
     }
 
-    /**
-     * 
-     */
     private void checkRemove()
     {
         World w = getWorld();
@@ -44,17 +30,11 @@ public class Star extends Actor
         }
     }
 
-    /**
-     * 
-     */
     public void setSpeed(int s)
     {
         speed = s;
     }
 
-    /**
-     * 
-     */
     private void checkTwinkle()
     {
         GreenfootImage img = getImage();

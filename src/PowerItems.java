@@ -1,4 +1,3 @@
-import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
 
@@ -20,9 +19,6 @@ public abstract class PowerItems extends SmoothMover
     /* The counter variable records how many times this actorhas moved.*/
     protected int counter;
 
-    /**
-     * 
-     */
     public PowerItems(int tX, int tY, int eT)
     {
         targetX = tX;
@@ -42,33 +38,18 @@ public abstract class PowerItems extends SmoothMover
         checkExpire();
     }
 
-    /**
-     * 
-     */
     protected void addedToWorld(World w)
     {
         origX = getX();
         origY = getY();
     }
 
-    /**
-     * 
-     */
     abstract double curveX(double f);
 
-    /**
-     * 
-     */
     abstract double curveY(double f);
 
-    /**
-     * 
-     */
     abstract void checkHitAvatar();
 
-    /**
-     * 
-     */
     protected void easing()
     {
         counter = counter + 1;
@@ -79,9 +60,6 @@ public abstract class PowerItems extends SmoothMover
         setLocation((targetX * fX) + (origX * (1 - fX)), (targetY * fY) + (origY * (1 - fY)));
     }
 
-    /**
-     * 
-     */
     private void checkExpire()
     {
         if (expireTime < 0) {

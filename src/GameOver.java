@@ -1,11 +1,6 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
-import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
 
-/**
- * 
- */
 public class GameOver extends World
 {
     private GreenfootSound backgroundMusic =  new GreenfootSound("Disaster.mp3");
@@ -21,9 +16,6 @@ public class GameOver extends World
         backgroundMusic.playLoop();
     }
 
-    /**
-     * 
-     */
     public void act()
     {
         if (Greenfoot.mouseClicked(this)) {
@@ -43,9 +35,6 @@ public class GameOver extends World
         finalScore.act();
     }
 
-    /**
-     * 
-     */
     public void setFinalScore(int finalScore)
     {
         this.finalScore.setValue(finalScore);

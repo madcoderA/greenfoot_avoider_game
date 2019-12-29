@@ -1,11 +1,7 @@
 // WARNING: This file is auto-generated and any changes to it will be overwritten
-import lang.stride.*;
 import java.util.*;
 import greenfoot.*;
 
-/**
- * 
- */
 public class Enemy extends Actor
 {
     private int timeToChange = 1;
@@ -40,9 +36,6 @@ public class Enemy extends Actor
         this.speed = speed;
     }
 
-    /**
-     * 
-     */
     public void changeDisposition()
     {
         int ypos = getY();

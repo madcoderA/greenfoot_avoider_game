@@ -6,8 +6,8 @@ public class Avatar extends Actor
     private int hitDelay = 50;
     private int nextImage = 0;
     private int health = 3;
-    private int stunTime = 0;
-    private int lagTime = 0;
+    private int stunDelay = 0;
+    private int lagDelay = 0;
     private Eye leftEye;
     private Eye rightEye;
 
@@ -15,8 +15,8 @@ public class Avatar extends Actor
     {
         MouseInfo mi = Greenfoot.getMouseInfo();
         if (mi != null) {
-            if (lagTime > 0) {
-                --lagTime;
+            if (lagDelay > 0) {
+                --lagDelay;
                 setLocation((getX() + mi.getX())/2, (getY()+mi.getY())/2);
             } else setLocation(mi.getX(), mi.getY());
             leftEye.setLocation(getX() - 10, getY() - 8);
@@ -29,7 +29,7 @@ public class Avatar extends Actor
      */
     public void act()
     {
-        if (stunTime > 0) --stunTime;
+        if (stunDelay > 0) --stunDelay;
         else followMouse();
         checkForCollisions();
     }
@@ -64,7 +64,7 @@ public class Avatar extends Actor
 
     public void lagControls()
     {
-        lagTime += 50;
+        lagDelay += 150;
     }
 
     public void addHealth()
@@ -83,6 +83,6 @@ public class Avatar extends Actor
 
     public void stun()
     {
-        stunTime += 30;
+        stunDelay += 50;
     }
 }

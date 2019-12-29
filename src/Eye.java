@@ -1,17 +1,8 @@
-// WARNING: This file is auto-generated and any changes to it will be overwritten
-import lang.stride.*;
 import java.util.List;
 import greenfoot.*;
 
-/**
- * 
- */
 public class Eye extends Actor
 {
-
-    /**
-     * 
-     */
     public Eye()
     {
         drawEye(2, 2);
@@ -25,9 +16,6 @@ public class Eye extends Actor
         lookAtEnemies();
     }
 
-    /**
-     * 
-     */
     private void drawEye(int dx, int dy)
     {
         GreenfootImage img =  new GreenfootImage(10, 10);
@@ -38,9 +26,6 @@ public class Eye extends Actor
         setImage(img);
     }
 
-    /**
-     * 
-     */
     public void lookAtEnemies()
     {
         List<Enemy> eList = getObjectsInRange(120, Enemy.class);
