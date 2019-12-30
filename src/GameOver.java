@@ -47,7 +47,7 @@ public class GameOver extends World
     {
     }
 
-    public void setPlayerHighScore(String s) {
+    public void setPlayerHighScore(int s) {
         final int FONT_SIZE = 32;
         Label scoreBoardMsg = new Label("Your Score:  " + s, FONT_SIZE);
         Label highScoreMsg = new Label("Your Best:  " + recordAndReturnHighScore(s), FONT_SIZE);
@@ -55,28 +55,39 @@ public class GameOver extends World
         addObject(highScoreMsg, getWidth()/2, (getHeight() * 2 / 3) + 45);
     }
 
-    private String recordAndReturnHighScore(String s) {
-        String hs = null;
+    private int recordAndReturnHighScore(int newScore) {
+       int highScore = 0; 
+        
+      if (UserInfo.isStorageAvailable()) {
+         UserInfo myInfo = UserInfo.getMyInfo();
+         highScore = myInfo.getScore();
+         if (newScore > highScore) {
+             myInfo.setScore(newScore);
+             myInfo.store();  // write back to server
+             highScore = newScore;
+         }
+     } else {
+        
         try {
             Path scoreFile = Paths.get("./scoreFile.txt");
 
             if( Files.exists(scoreFile) ) {
                 byte[] bytes = Files.readAllBytes(scoreFile);
-                hs = new String(bytes);
+                highScore = Integer.parseInt(new String(bytes));
 
-                if( Integer.parseInt(s) > Integer.parseInt(hs) ) {
-                    Files.write(scoreFile, s.getBytes());  // Default is CREATE | TRUNCATE_EXISTING | WRITE
-                    hs = s;
+                if( newScore > highScore) {
+                    Files.write(scoreFile, Integer.toString(newScore).getBytes());  // Default is CREATE | TRUNCATE_EXISTING | WRITE
+                    highScore = newScore;
                 }
             } else {
-                Files.write(scoreFile, s.getBytes());
-                hs = s;
+                Files.write(scoreFile, Integer.toString(newScore).getBytes());
+                highScore = newScore;
             }
 
         } catch( IOException e ) {
             System.out.println("IOException");
         }
-        
-        return hs;
+    }
+        return highScore;
     }
 }

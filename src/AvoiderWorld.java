@@ -113,7 +113,7 @@ public class AvoiderWorld extends World
     public void endGame() {
         bkgMusic.stop();
         GameOver go = new GameOver();
-        go.setPlayerHighScore( Integer.toString( scoreBoard.getScore() ) );
+        go.setPlayerHighScore(scoreBoard.getScore());
         Greenfoot.setWorld(go);
     }
 

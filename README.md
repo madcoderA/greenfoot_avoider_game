@@ -4,6 +4,8 @@ This is a game complete with an introduction screen, game over screen, a score, 
 
 I've updated the code to new Greenfoot API (version 3.6.1). 
 
+You can play this game online: https://www.greenfoot.org/scenarios/25089
+
 ## Main Game screen
 
 ![Screenshot](Screenshot.png)
