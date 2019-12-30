@@ -9,6 +9,9 @@ public class Avatar extends Actor
     private int lagDelay = 0;
     private Eye leftEye;
     private Eye rightEye;
+    private BadgeCenter bc;
+    private static GreenfootSound woot = new GreenfootSound("woot.wav");
+    private static GreenfootSound ahhh = new GreenfootSound("ahhh.wav");
 
     public void followMouse()
     {
@@ -38,7 +41,9 @@ public class Avatar extends Actor
     public void checkForCollisions()
     {
         Actor enemy = getOneIntersectingObject(Enemy.class);
-        if (hitDelay == 0 && enemy != null) {
+        if( hitDelay == 0 && enemy != null ) {  // If not empty, we hit an Enemy
+            bc.hitEnemy(); // Register hit with badge center
+            sayWoot();
             if (health == 0) {
                 AvoiderWorld world = (AvoiderWorld)getWorld();
                 world.endGame();
@@ -50,6 +55,7 @@ public class Avatar extends Actor
                 hitDelay = 50;
             }
         }
+        
         if (hitDelay > 0) {
             --hitDelay;
             if (hitDelay % 10 == 0) getImage().setTransparency(255);
@@ -62,7 +68,10 @@ public class Avatar extends Actor
         leftEye =  new Eye();
         rightEye =  new Eye();
         w.addObject(leftEye, getX() - 10, getY() - 8);
-        w.addObject(rightEye, getX() + 10, getY() - 8);
+        w.addObject(rightEye, getX() + 10, getY() - 8);        
+        bc = BadgeCenter.getInstance();
+        // woot = new GreenfootSound("sounds/woot.wav");
+        // ahhh = new GreenfootSound("sounds/ahhh.wav");
     }
 
     public void lagControls()
@@ -82,6 +91,14 @@ public class Avatar extends Actor
                 setImage("skull" + nextImage + ".png");
             }
         }
+    }
+    
+    public void sayAhhh() {
+        ahhh.play();
+    }
+    
+    public void sayWoot() {
+        woot.play();
     }
 
     public void stun()

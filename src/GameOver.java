@@ -3,7 +3,10 @@ import java.nio.*;
 import java.nio.file.*;
 import java.io.IOException;
 import java.util.List;
-
+/*
+ * Background music: "Disaster" by Lemonnade
+ * https://www.newgrounds.com/audio/listen/470536 
+ */
 public class GameOver extends World
 {
     private GreenfootSound backgroundMusic =  new GreenfootSound("Disaster.mp3");
@@ -19,12 +22,12 @@ public class GameOver extends World
         // get the badges!
         
         List<Badge> badgeList = BadgeCenter.getInstance().getBadges();
-        int yPos = 140;
+        int yPos = 130;
         while(!badgeList.isEmpty()) {
             Badge nextBadge = badgeList.remove(0);
-            addObject(nextBadge, 65, yPos);
+            addObject(nextBadge, 60, yPos);
             yPos += 70;
-        } 
+        }
     }
 
     public void act()
@@ -45,11 +48,11 @@ public class GameOver extends World
     }
 
     public void setPlayerHighScore(String s) {
-        final int FONT_SIZE = 22;
+        final int FONT_SIZE = 32;
         Label scoreBoardMsg = new Label("Your Score:  " + s, FONT_SIZE);
         Label highScoreMsg = new Label("Your Best:  " + recordAndReturnHighScore(s), FONT_SIZE);
-        addObject(scoreBoardMsg, getWidth()/5, getHeight() * 2 / 3 + 25);
-        addObject(highScoreMsg, getWidth()/5, (getHeight() * 2 / 3) + 60);
+        addObject(scoreBoardMsg, getWidth()/2, getHeight() * 2 / 3);
+        addObject(highScoreMsg, getWidth()/2, (getHeight() * 2 / 3) + 45);
     }
 
     private String recordAndReturnHighScore(String s) {

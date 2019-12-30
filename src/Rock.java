@@ -1,24 +1,26 @@
 public class Rock extends PowerItems
 {
-    public Rock(int tX, int tY, int eT)
-    {
+    private BadgeCenter bc;
+    
+    public Rock( int tX, int tY, int eT ) {
         super(tX, tY, eT);
+        bc = BadgeCenter.getInstance();
     }
-
-    protected double curveX(double f)
-    {
+    
+    protected double curveX(double f) {
         return f;
     }
-
-    protected double curveY(double f)
-    {
+    
+    protected double curveY(double f) {
+        // return Math.sin(f);  // Best ease-in evah!
         return f * f * f;
     }
-
-    protected void checkHitAvatar()
-    {
-        Avatar a = (Avatar)getOneIntersectingObject(Avatar.class);
-        if (a != null) {
+    
+    protected void checkHitAvatar() {
+        Avatar a = (Avatar) getOneIntersectingObject(Avatar.class);
+        if( a != null ) {
+            bc.hitRock();
+            a.sayAhhh();
             a.addHealth();
             getWorld().removeObject(this);
         }
