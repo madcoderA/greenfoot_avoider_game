@@ -12,16 +12,12 @@ public class Eye extends Actor {
         drawEye(2, 2);
     }
 
-    /**
-     * Act - do whatever the Eye wants to do. This method is called whenever the
-     * 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act() {
         lookAtEnemies();
     }
 
     private void drawEye(int dx, int dy) {
-        GreenfootImage eyeImage = new GreenfootImage(10, 10);
+        final GreenfootImage eyeImage = new GreenfootImage(10, 10);
         eyeImage.setColor(Color.WHITE);
         eyeImage.fillOval(0, 0, 10, 10);
         eyeImage.setColor(Color.BLACK);
@@ -30,24 +26,14 @@ public class Eye extends Actor {
     }
 
     public void lookAtEnemies() {
-        List<Enemy> enemies = getObjectsInRange(120, Enemy.class);
-        if (enemies.isEmpty())
-            return;
-
-        Enemy enemy = enemies.get(0);
-        if (enemy.getX() < getX()) {
-            if (enemy.getY() < getY()) {
-                drawEye(1, 1);
-            } else {
-                drawEye(1, 3);
-            }
+        final List<Enemy> enemies = getObjectsInRange(120, Enemy.class);
+        if (enemies.isEmpty()) {
+            drawEye(2, 2);
         } else {
-            if (enemy.getY() < getY()) {
-                drawEye(3, 1);
-            } else {
-                drawEye(3, 3);
-            }
+            final Enemy enemy = enemies.get(0);
+            final int dx = enemy.getX() < getX() ? 1 : 3;
+            final int dy = enemy.getY() < getY() ? 1 : 3;
+            drawEye(dx, dy);
         }
     }
-
 }

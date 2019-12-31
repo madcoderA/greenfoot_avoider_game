@@ -1,11 +1,17 @@
+/**
+ * Behavior implementation for Clover.
+ * 
+ * @author Jegors Čemisovs
+ * @version 2019-12-31
+ */
 import java.lang.Math;
 
 public class Clover extends PowerItems {
-    private BadgeCenter bc;
+    private BadgeCenter badgeCenter;
 
     public Clover(int tX, int tY, int eT) {
         super(tX, tY, eT);
-        bc = BadgeCenter.getInstance();
+        badgeCenter = BadgeCenter.getInstance();
     }
 
     protected double curveX(double f) {
@@ -17,11 +23,11 @@ public class Clover extends PowerItems {
     }
 
     protected void checkHitAvatar() {
-        Avatar a = (Avatar) getOneIntersectingObject(Avatar.class);
-        if (a != null) {
-            bc.hitClover();
-            a.sayWoot();
-            a.lagControls();
+        Avatar avatar = (Avatar) getOneIntersectingObject(Avatar.class);
+        if (avatar != null) {
+            badgeCenter.hitClover();
+            avatar.sayWoot();
+            avatar.lagControls();
             getWorld().removeObject(this);
         }
     }
