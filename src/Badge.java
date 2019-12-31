@@ -1,15 +1,15 @@
 import greenfoot.*;
 
 public class Badge extends Actor {
-    GreenfootImage bkg;
-    GreenfootImage msg;
+    GreenfootImage background;
+    GreenfootImage message;
     // Font font = new Font(12);
-    
+
     public Badge(String name) {
-        bkg = getImage();
-        msg = new GreenfootImage(name, 10, Color.WHITE, null);
-        bkg.drawImage(msg, 10, 20);
-        setImage(bkg);
+        background = getImage();
+        message = new GreenfootImage(name, 10, Color.WHITE, null);
+        background.drawImage(message, 10, 20);
+        setImage(background);
     }
 
 }

@@ -1,15 +1,19 @@
+/**
+ * Simple text label 
+ * 
+ * @author Jegors Čemisovs
+ * @version 2019-12-31
+ */
 import greenfoot.*;  
 
 public class Label extends Actor
 {
-	GreenfootImage msg;
-
-	public Label(String s, int size) {
-		this(s, size, Color.WHITE);
+	public Label(String message, int fontSize) {
+		this(message, fontSize, Color.WHITE);
 	}  
 	
-	public Label(String s, int size, Color c) {
-		msg = new GreenfootImage(s, size, c, null);
-		setImage(msg);
+	public Label(String message, int fontSize, Color color) {
+		final GreenfootImage label = new GreenfootImage(message, fontSize, color, null);
+		setImage(label);
 	}  
 }

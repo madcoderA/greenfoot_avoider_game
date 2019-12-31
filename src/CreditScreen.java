@@ -1,28 +1,20 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; 
 
 /**
- * Write a description of class CreditScreen here.
+ * Behavior implementation for Credit Screen.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jegors Čemisovs
+ * @version 2019-12-31
  */
-public class CreditScreen extends World
-{
+public class CreditScreen extends World {
 
-    /**
-     * Constructor for objects of class CreditScreen.
-     * 
-     */
-    public CreditScreen()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+    public CreditScreen() {
+        super(600, 400, 1);
     }
-    
+
     public void act() {
-        if( Greenfoot.mouseClicked(this) ) {
-            World w = new IntroScreen();
-            Greenfoot.setWorld(w);
+        if (Greenfoot.mouseClicked(this)) {
+            Greenfoot.setWorld(new IntroScreen());
         }
     }
 }

@@ -1,27 +1,32 @@
-public class Rock extends PowerItems
-{
-    private BadgeCenter bc;
-    
-    public Rock( int tX, int tY, int eT ) {
+/**
+ * Behavior implementation for Rock.
+ * 
+ * @author Jegors Čemisovs
+ * @version 2019-12-31
+ */
+public class Rock extends PowerItems {
+    private BadgeCenter badgeCenter;
+
+    public Rock(int tX, int tY, int eT) {
         super(tX, tY, eT);
-        bc = BadgeCenter.getInstance();
+        badgeCenter = BadgeCenter.getInstance();
     }
-    
+
     protected double curveX(double f) {
         return f;
     }
-    
+
     protected double curveY(double f) {
-        // return Math.sin(f);  // Best ease-in evah!
+        // return Math.sin(f); // Best ease-in evah!
         return f * f * f;
     }
-    
+
     protected void checkHitAvatar() {
-        Avatar a = (Avatar) getOneIntersectingObject(Avatar.class);
-        if( a != null ) {
-            bc.hitRock();
-            a.sayAhhh();
-            a.addHealth();
+        Avatar avatar = (Avatar) getOneIntersectingObject(Avatar.class);
+        if (avatar != null) {
+            badgeCenter.hitRock();
+            avatar.sayAhhh();
+            avatar.addHealth();
             getWorld().removeObject(this);
         }
     }

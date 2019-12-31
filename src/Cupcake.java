@@ -1,26 +1,31 @@
-public class Cupcake extends PowerItems
-{
-    private BadgeCenter bc;
-    
-    public Cupcake( int tX, int tY, int eT) {
+/**
+ * Behavior implementation for Cupcake.
+ * 
+ * @author Jegors Čemisovs
+ * @version 2019-12-31
+ */
+public class Cupcake extends PowerItems {
+    private BadgeCenter badgeCenter;
+
+    public Cupcake(int tX, int tY, int eT) {
         super(tX, tY, eT);
-        bc = BadgeCenter.getInstance();
+        badgeCenter = BadgeCenter.getInstance();
     }
-            
+
     protected double curveX(double f) {
         return f;
     }
 
     protected double curveY(double f) {
-        return f; 
+        return f;
     }
 
     protected void checkHitAvatar() {
-        Avatar a = (Avatar) getOneIntersectingObject(Avatar.class);
-        if( a != null ) {
-            bc.hitCupcake();
-            a.sayWoot();
-            a.stun();
+        Avatar avatar = (Avatar) getOneIntersectingObject(Avatar.class);
+        if (avatar != null) {
+            badgeCenter.hitCupcake();
+            avatar.sayWoot();
+            avatar.stun();
             getWorld().removeObject(this);
         }
     }

@@ -1,10 +1,15 @@
 # Avoider Game
+
 A simple avoider game created with Greenfoot IDE. The idea and base code was taken from the book "Creative Greenfoot".
 This is a game complete with an introduction screen, game over screen, a score, mouse input, and sound.
 
-I've updated the code to new Greenfoot API (version 3.6.1). 
+I've updated the code to new Greenfoot API (version 3.6.1).
 
 You can play this game online: https://www.greenfoot.org/scenarios/25089
+
+## Credits
+
+![Credits](src/images/creditScreen.png)
 
 ## Main Game screen
 
@@ -13,4 +18,3 @@ You can play this game online: https://www.greenfoot.org/scenarios/25089
 ## Game Over screen
 
 ![Game Over](GameOver.png)
-

@@ -1,28 +1,19 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
- * Write a description of class StoryScreen here.
+ * Behavior implementation for Story Screen.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jegors Čemisovs
+ * @version 2019-12-31
  */
-public class StoryScreen extends World
-{
+public class StoryScreen extends World {
 
-    /**
-     * Constructor for objects of class StoryScreen.
-     * 
-     */
-    public StoryScreen()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+    public StoryScreen() {
+        super(600, 400, 1);
     }
-    
+
     public void act() {
-        if( Greenfoot.mouseClicked(this) ) {
-            World w = new IntroScreen();
-            Greenfoot.setWorld(w);
-        }
+        if (Greenfoot.mouseClicked(this))
+            Greenfoot.setWorld(new IntroScreen());
     }
 }
