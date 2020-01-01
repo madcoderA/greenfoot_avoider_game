@@ -22,8 +22,7 @@ public class AvoiderWorld extends World {
 
     public AvoiderWorld() {
         super(900, 600, 1, false);
-        if (!backgroundMusic.isPlaying())
-            backgroundMusic.playLoop();
+        backgroundMusic.playLoop();
         setPaintOrder(Eye.class, Avatar.class, Enemy.class, PowerItems.class);
         prepare();
     }
@@ -33,6 +32,12 @@ public class AvoiderWorld extends World {
         addObject(new Avatar(), 450, 300);
         scoreBoard = new Score();
         addObject(scoreBoard, 70, 20);
+    }
+
+    public void started() {
+    }
+
+    public void stopped() {
     }
 
     public void act() {
@@ -120,9 +125,9 @@ public class AvoiderWorld extends World {
 
     public void endGame() {
         backgroundMusic.stop();
-        final GameOver go = new GameOver();
-        go.setPlayerHighScore(scoreBoard.getScore());
-        Greenfoot.setWorld(go);
+        final GameOver gameOver = new GameOver();
+        gameOver.setPlayerHighScore(scoreBoard.getScore());
+        Greenfoot.setWorld(gameOver);
     }
 
     private void generateInitialStarField() {

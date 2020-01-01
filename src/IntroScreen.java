@@ -11,7 +11,7 @@ public class IntroScreen extends World {
     // Background music: "Space Warning" by Zakhej
     // https://www.newgrounds.com/audio/listen/485972
     private final static GreenfootSound backgroundMusic = new GreenfootSound("Space-warning.mp3");
-    
+
     private Actor startButton;
     private Actor creditButton;
     private Actor storyButton;
@@ -21,10 +21,17 @@ public class IntroScreen extends World {
      */
     public IntroScreen() {
         super(900, 600, 1);
-        backgroundMusic.playLoop();
+        if (!backgroundMusic.isPlaying())
+            backgroundMusic.playLoop();
         startButton = addButton("Start Game", getWidth() / 2, getHeight() * 2 / 3);
         creditButton = addButton("Credits Screen", getWidth() / 2, (getHeight() * 2 / 3) + 40);
         storyButton = addButton("Story Screen", getWidth() / 2, (getHeight() * 2 / 3) + 80);
+    }
+
+    public void started() {
+    }
+
+    public void stopped() {
     }
 
     public void act() {
@@ -32,8 +39,7 @@ public class IntroScreen extends World {
         if (Greenfoot.mouseClicked(startButton)) {
             backgroundMusic.stop();
             Greenfoot.setWorld(new AvoiderWorld());
-        }
-        else if (Greenfoot.mouseClicked(creditButton))
+        } else if (Greenfoot.mouseClicked(creditButton))
             Greenfoot.setWorld(new CreditScreen());
         else if (Greenfoot.mouseClicked(storyButton))
             Greenfoot.setWorld(new StoryScreen());
