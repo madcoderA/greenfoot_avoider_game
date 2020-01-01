@@ -7,11 +7,9 @@
 import java.lang.Math;
 
 public class Clover extends PowerItems {
-    private BadgeCenter badgeCenter;
 
-    public Clover(int tX, int tY, int eT) {
-        super(tX, tY, eT);
-        badgeCenter = BadgeCenter.getInstance();
+    public Clover(int targetX, int targetY, int expireTime) {
+        super(targetX, targetY, expireTime);
     }
 
     protected double curveX(double f) {
@@ -25,7 +23,7 @@ public class Clover extends PowerItems {
     protected void checkHitAvatar() {
         Avatar avatar = (Avatar) getOneIntersectingObject(Avatar.class);
         if (avatar != null) {
-            badgeCenter.hitClover();
+            BadgeCenter.getInstance().hitClover();
             avatar.sayWoot();
             avatar.lagControls();
             getWorld().removeObject(this);
