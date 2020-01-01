@@ -1,13 +1,16 @@
+import java.util.List;
+import greenfoot.*;
+
 /**
  * Implementation of avatar's eyes.
  * 
  * @author Jegors Čemisovs
- * @version 2019-12-31
+ * @version 2020-01-01
  */
-import java.util.List;
-import greenfoot.*;
 
 public class Eye extends Actor {
+    final static int SIZE = 10;
+
     public Eye() {
         drawEye(2, 2);
     }
@@ -17,9 +20,9 @@ public class Eye extends Actor {
     }
 
     private void drawEye(int dx, int dy) {
-        final GreenfootImage eyeImage = new GreenfootImage(10, 10);
+        final GreenfootImage eyeImage = new GreenfootImage(SIZE, SIZE);
         eyeImage.setColor(Color.WHITE);
-        eyeImage.fillOval(0, 0, 10, 10);
+        eyeImage.fillOval(0, 0, SIZE, SIZE);
         eyeImage.setColor(Color.BLACK);
         eyeImage.fillOval(dx, dy, 6, 6);
         setImage(eyeImage);

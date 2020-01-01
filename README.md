@@ -15,7 +15,26 @@ You score more points the longer you survive the cheery horde.
 
 ## Credits
 
-![Credits](src/images/creditScreen.png)
+### Programming
+
+- Michael J.Williams, Original ActionScript version
+- Michael Haungs, Original Greenfoot version
+- Jegors Čemisovs, Code update to support new Greenfoot API
+
+### Music
+
+- "Space Hero" by [Sandlersongs](https://sadlersongs.newgrounds.com/)
+- "UFO on the streets" by [T-balt](https://t-balt.newgrounds.com/)
+- "Disaster" by [Lemonnade](https://lemonnade.newgrounds.com/)
+
+### Sound effects
+
+- Michael Haungs
+
+### Graphics
+
+- Default Greenfoot images
+- Michael Haungs
 
 ## Main Game screen
 
