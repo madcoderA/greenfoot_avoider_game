@@ -106,7 +106,7 @@ public class AvoiderWorld extends World {
     }
 
     private void increaseLevel() {
-        int score = scoreBoard.getScore();
+        final int score = scoreBoard.getScore();
 
         if (score > nextLevel) {
             enemySpawnRate += 4;
@@ -120,7 +120,7 @@ public class AvoiderWorld extends World {
 
     public void endGame() {
         backgroundMusic.stop();
-        GameOver go = new GameOver();
+        final GameOver go = new GameOver();
         go.setPlayerHighScore(scoreBoard.getScore());
         Greenfoot.setWorld(go);
     }
