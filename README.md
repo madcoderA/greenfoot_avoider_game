@@ -23,7 +23,7 @@ You score more points the longer you survive the cheery horde.
 
 ### Music
 
-- "Space Hero" by [Sandlersongs](https://sadlersongs.newgrounds.com/)
+- "Space Warning" by [Zakhej](https://zakhej.newgrounds.com/)
 - "UFO on the streets" by [T-balt](https://t-balt.newgrounds.com/)
 - "Disaster" by [Lemonnade](https://lemonnade.newgrounds.com/)
 
