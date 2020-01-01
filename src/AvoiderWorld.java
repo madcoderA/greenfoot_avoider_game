@@ -22,15 +22,15 @@ public class AvoiderWorld extends World {
 
     public AvoiderWorld() {
         super(900, 600, 1, false);
-        backgroundMusic.playLoop();
+        if (!backgroundMusic.isPlaying())
+            backgroundMusic.playLoop();
         setPaintOrder(Eye.class, Avatar.class, Enemy.class, PowerItems.class);
         prepare();
     }
 
     private void prepare() {
         generateInitialStarField();
-        Avatar avatar = new Avatar();
-        addObject(avatar, 450, 300);
+        addObject(new Avatar(), 450, 300);
         scoreBoard = new Score();
         addObject(scoreBoard, 70, 20);
     }
@@ -45,9 +45,9 @@ public class AvoiderWorld extends World {
     private void generateEnemies() {
         // Randomly add enemies to the world
         if (Greenfoot.getRandomNumber(1000) < enemySpawnRate) {
-            Enemy e = new Enemy();
-            e.setSpeed(enemySpeed);
-            addObject(e, Greenfoot.getRandomNumber(getWidth() - 20) + 10, -30);
+            final Enemy enemy = new Enemy();
+            enemy.setSpeed(enemySpeed);
+            addObject(enemy, Greenfoot.getRandomNumber(getWidth() - 20) + 10, -30);
             // Give us some points for facing yet another enemy
             scoreBoard.addScore(1);
         }
@@ -56,21 +56,21 @@ public class AvoiderWorld extends World {
     private void generateStars(int yLoc) {
         // Create a moving background star field
         if (Greenfoot.getRandomNumber(1000) < 350) {
-            Star s = new Star();
-            GreenfootImage image = s.getImage();
+            final Star star = new Star();
+            final GreenfootImage image = star.getImage();
             if (Greenfoot.getRandomNumber(1000) < 300) {
                 // this is a close bright star
-                s.setSpeed(3);
+                star.setSpeed(3);
                 image.setTransparency(Greenfoot.getRandomNumber(25) + 225);
                 image.scale(4, 4);
             } else {
                 // this is a further dim star
-                s.setSpeed(2);
+                star.setSpeed(2);
                 image.setTransparency(Greenfoot.getRandomNumber(50) + 100);
                 image.scale(2, 2);
             }
-            s.setImage(image);
-            addObject(s, Greenfoot.getRandomNumber(getWidth() - 20) + 10, yLoc);
+            star.setImage(image);
+            addObject(star, Greenfoot.getRandomNumber(getWidth() - 20) + 10, yLoc);
         }
     }
 
@@ -96,11 +96,11 @@ public class AvoiderWorld extends World {
         if (Greenfoot.getRandomNumber(1000) < freq) {
             int targetX = Greenfoot.getRandomNumber(getWidth() - 80) + 40;
             int targetY = Greenfoot.getRandomNumber(getHeight() / 2) + 20;
-            Actor a = createPowerItem(type, targetX, targetY, 100);
+            Actor powerItem = createPowerItem(type, targetX, targetY, 100);
             if (Greenfoot.getRandomNumber(100) < 50) {
-                addObject(a, getWidth() + 20, Greenfoot.getRandomNumber(getHeight() / 2) + 30);
+                addObject(powerItem, getWidth() + 20, Greenfoot.getRandomNumber(getHeight() / 2) + 30);
             } else {
-                addObject(a, -20, Greenfoot.getRandomNumber(getHeight() / 2) + 30);
+                addObject(powerItem, -20, Greenfoot.getRandomNumber(getHeight() / 2) + 30);
             }
         }
     }
