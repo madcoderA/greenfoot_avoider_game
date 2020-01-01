@@ -1,6 +1,7 @@
 /**
  * Behavior implementation for Rock.
  * 
+ * @author Michael Haungs
  * @author Jegors Čemisovs
  * @version 2020-01-01
  */
@@ -19,7 +20,7 @@ public class Rock extends PowerItems {
     }
 
     protected void checkHitAvatar() {
-        Avatar avatar = (Avatar) getOneIntersectingObject(Avatar.class);
+        final Avatar avatar = (Avatar) getOneIntersectingObject(Avatar.class);
         if (avatar != null) {
             BadgeCenter.getInstance().hitRock();
             avatar.sayAhhh();

@@ -4,10 +4,10 @@ import greenfoot.*;
 /**
  * Implementation of avatar's eyes.
  * 
+ * @author Michael Haungs
  * @author Jegors Čemisovs
  * @version 2020-01-01
  */
-
 public class Eye extends Actor {
     final static int SIZE = 10;
 

@@ -1,11 +1,16 @@
 import greenfoot.*;
 import java.util.List;
 
-/*
- * Background music: "Disaster" by Lemonnade
- * https://www.newgrounds.com/audio/listen/470536 
+/**
+ * Game Over Screen
+ * 
+ * @author Michael Haungs
+ * @author Jegors Čemisovs
+ * @version 2020-01-01
  */
 public class GameOver extends World {
+    // Background music: "Disaster" by Lemonnade
+    // https://www.newgrounds.com/audio/listen/470536 
     private final static GreenfootSound backgroundMusic = new GreenfootSound("Disaster.mp3");
 
     /**
@@ -17,10 +22,10 @@ public class GameOver extends World {
         backgroundMusic.playLoop();
         // get the badges!
 
-        List<Badge> badgeList = BadgeCenter.getInstance().getBadges();
+        final List<Badge> badgeList = BadgeCenter.getInstance().getBadges();
         int yPos = 130;
         while (!badgeList.isEmpty()) {
-            Badge nextBadge = badgeList.remove(0);
+            final Badge nextBadge = badgeList.remove(0);
             addObject(nextBadge, 60, yPos);
             yPos += 70;
         }
@@ -42,18 +47,17 @@ public class GameOver extends World {
 
     public void setPlayerHighScore(int s) {
         final int FONT_SIZE = 32;
-        Label scoreBoardMsg = new Label("Your Score:  " + s, FONT_SIZE);
+        final Label scoreBoardMsg = new Label("Your Score:  " + s, FONT_SIZE);
         addObject(scoreBoardMsg, getWidth() / 2, getHeight() * 2 / 3);
         if (UserInfo.isStorageAvailable()) {
-            Label highScoreMsg = new Label("Your Best:  " + recordAndReturnHighScore(s), FONT_SIZE);
+            final Label highScoreMsg = new Label("Your Best:  " + recordAndReturnHighScore(s), FONT_SIZE);
             addObject(highScoreMsg, getWidth() / 2, (getHeight() * 2 / 3) + 45);
         }
     }
 
     private int recordAndReturnHighScore(int newScore) {
-        int highScore = 0;
-        UserInfo myInfo = UserInfo.getMyInfo();
-        highScore = myInfo.getScore();
+        final UserInfo myInfo = UserInfo.getMyInfo();
+        int highScore = myInfo.getScore();
         if (newScore > highScore) {
             myInfo.setScore(newScore);
             myInfo.store(); // write back to server

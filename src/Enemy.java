@@ -1,5 +1,12 @@
 import greenfoot.*;
 
+/**
+ * Enemies
+ * 
+ * @author Michael Haungs
+ * @author Jegors Čemisovs
+ * @version 2020-01-01
+ */
 public class Enemy extends Actor
 {
     private int timeToChange = 1;
@@ -36,7 +43,7 @@ public class Enemy extends Actor
 
     public void changeDisposition()
     {
-        int ypos = getY();
+        final int ypos = getY();
         final int worldHeight = getWorld().getHeight();
         final int marker1 = (int)(worldHeight * 0.5);
         final int marker2 = (int)(worldHeight * 0.75);

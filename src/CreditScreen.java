@@ -3,6 +3,7 @@ import greenfoot.*;
 /**
  * Behavior implementation for Credit Screen.
  * 
+ * @author Michael Haungs
  * @author Jegors Čemisovs
  * @version 2019-12-31
  */

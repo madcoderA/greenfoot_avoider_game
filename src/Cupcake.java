@@ -1,6 +1,7 @@
 /**
  * Behavior implementation for Cupcake.
  * 
+ * @author Michael Haungs
  * @author Jegors Čemisovs
  * @version 2020-01-01
  */

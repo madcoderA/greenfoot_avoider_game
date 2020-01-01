@@ -1,17 +1,22 @@
-/**
- * Stars for main game screen.
- * 
- * @author Jegors Čemisovs
- * @version 2019-12-31
- */
 import greenfoot.*;
 
+/**
+ * Stars for main game screen. Our star field is going to provide
+ * various sized stars moving in the background at various speeds,
+ * to produce the effect of moving through space at high speed.
+ * 
+ * @author Michael Haungs
+ * @author Jegors Čemisovs
+ * @version 2020-01-01
+ */
 public class Star extends Actor {
-    protected int twinkleTime = 0;
-    protected int currentTransparency = 0;
-    int speed = 1;
+    private int twinkleTime = 0;
+    private int currentTransparency = 0;
+    private int speed = 1;
 
     public Star() {
+        // Instead of setting the image of the star to a file containing a graphic,
+        // we are going to dynamically draw the image
         final GreenfootImage image = new GreenfootImage(10, 10);
         image.setColor(Color.WHITE);
         image.fillOval(0, 0, 10, 10);
@@ -25,7 +30,7 @@ public class Star extends Actor {
     }
 
     private void checkRemove() {
-        World world = getWorld();
+        final World world = getWorld();
         if (getY() > world.getHeight() + 30) {
             world.removeObject(this);
         }

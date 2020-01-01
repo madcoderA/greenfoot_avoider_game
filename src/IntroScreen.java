@@ -3,18 +3,18 @@ import greenfoot.*;
 /**
  * Intro Screen
  * 
+ * @author Michael Haungs
  * @author Jegors Čemisovs
  * @version 2020-01-01
  */
-
 public class IntroScreen extends World {
     // Background music: "Space Warning" by Zakhej
     // https://www.newgrounds.com/audio/listen/485972
-    private final GreenfootSound backgroundMusic = new GreenfootSound("Space-warning.mp3");
+    private final static GreenfootSound backgroundMusic = new GreenfootSound("Space-warning.mp3");
     
-    Actor startButton;
-    Actor creditButton;
-    Actor storyButton;
+    private Actor startButton;
+    private Actor creditButton;
+    private Actor storyButton;
 
     /**
      * Constructor for objects of class IntroScreen.
@@ -40,7 +40,7 @@ public class IntroScreen extends World {
     }
 
     private Actor addButton(String text, int x, int y) {
-        Actor button = new Label(text, 24);
+        final Actor button = new Label(text, 24);
         addObject(button, x, y);
         return button;
     }

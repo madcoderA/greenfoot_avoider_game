@@ -3,6 +3,10 @@ import greenfoot.*;
 /**
  * The class contain all the common code for easing and being a power item
  * (power-up or power-down.)
+ * 
+ * @author Michael Haungs
+ * @author Jegors Čemisovs
+ * @version 2020-01-01
  */
 public abstract class PowerItems extends SmoothMover {
     /* track the ending coordinates */
@@ -26,12 +30,11 @@ public abstract class PowerItems extends SmoothMover {
     /* The counter variable records how many times this actorhas moved. */
     protected int counter;
 
-    public PowerItems(int tX, int tY, int eT) {
-        targetX = tX;
-        targetY = tY;
-        expireTime = eT;
+    public PowerItems(int targetX, int targetY, int expireTime) {
+        this.targetX = targetX;
+        this.targetY = targetY;
+        this.expireTime = duration = expireTime;
         counter = 0;
-        duration = expireTime;
     }
 
     /**
@@ -56,7 +59,7 @@ public abstract class PowerItems extends SmoothMover {
     abstract void checkHitAvatar();
 
     protected void easing() {
-        counter = counter + 1;
+        ++counter;
         double fX = counter / duration;
         double fY = counter / duration;
         fX = curveX(fX);
@@ -65,12 +68,11 @@ public abstract class PowerItems extends SmoothMover {
     }
 
     private void checkExpire() {
-        if (expireTime < 0) {
-            World w = getWorld();
-            if (w != null) {
-                w.removeObject(this);
+        if (--expireTime < 0) {
+            World world = getWorld();
+            if (world != null) {
+                world.removeObject(this);
             }
         }
-        expireTime = expireTime - 1;
     }
 }

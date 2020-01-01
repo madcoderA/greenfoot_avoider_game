@@ -1,8 +1,9 @@
 /**
  * Simple text label 
  * 
+ * @author Michael Haungs
  * @author Jegors Čemisovs
- * @version 2019-12-31
+ * @version 2020-01-01
  */
 import greenfoot.*;  
 

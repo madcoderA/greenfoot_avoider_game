@@ -1,7 +1,17 @@
 import greenfoot.*;
 
+/**
+ * The main screen of the game
+ * 
+ * @author Michael Haungs
+ * @author Jegors Čemisovs
+ * @version 2020-01-01
+ */
 public class AvoiderWorld extends World {
-    private GreenfootSound bkgMusic;
+    // Background music: "UFO on the streets" by T-balt
+    // http://www.newgrounds.com/audio/listen/504436
+    private final static GreenfootSound backgroundMusic = new GreenfootSound("UFO_T-Balt.mp3");
+
     private Score scoreBoard;
     private int enemySpawnRate = 20;
     private int enemySpeed = 1;
@@ -11,17 +21,18 @@ public class AvoiderWorld extends World {
     private int healthFrequency = 1;
 
     public AvoiderWorld() {
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(900, 600, 1, false);
-
-        // Initialize the music
-        bkgMusic = new GreenfootSound("sounds/UFO_T-Balt.mp3");
-        // Music Credit: http://www.newgrounds.com/audio/listen/504436 by T-balt
-        bkgMusic.playLoop(); // Play the music
-
+        backgroundMusic.playLoop();
         setPaintOrder(Eye.class, Avatar.class, Enemy.class, PowerItems.class);
         prepare();
+    }
+
+    private void prepare() {
         generateInitialStarField();
+        Avatar avatar = new Avatar();
+        addObject(avatar, 450, 300);
+        scoreBoard = new Score();
+        addObject(scoreBoard, 70, 20);
     }
 
     public void act() {
@@ -108,17 +119,10 @@ public class AvoiderWorld extends World {
     }
 
     public void endGame() {
-        bkgMusic.stop();
+        backgroundMusic.stop();
         GameOver go = new GameOver();
         go.setPlayerHighScore(scoreBoard.getScore());
         Greenfoot.setWorld(go);
-    }
-
-    private void prepare() {
-        Avatar avatar = new Avatar();
-        addObject(avatar, 450, 300);
-        scoreBoard = new Score();
-        addObject(scoreBoard, 70, 20);
     }
 
     private void generateInitialStarField() {

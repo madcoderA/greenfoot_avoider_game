@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * BadgeCenter
+ * 
+ * @author Michael Haungs
+ * @author Jegors Čemisovs
+ * @version 2020-01-01
+ */
 public class BadgeCenter // Implemented as a Singleton
 {
     private int clovers, rocks, enemies, cupcakes;
