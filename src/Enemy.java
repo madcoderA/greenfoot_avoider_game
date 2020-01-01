@@ -20,9 +20,9 @@ public class Enemy extends Actor
      */
     public void checkRemove()
     {
-        World w = getWorld();
-        if (getY() > w.getHeight() + 30) {
-            w.removeObject(this);
+        World world = getWorld();
+        if (getY() > world.getHeight() + 30) {
+            world.removeObject(this);
         }
     }
 

@@ -1,4 +1,4 @@
-import greenfoot.*; 
+import greenfoot.*;
 
 /**
  * Behavior implementation for Credit Screen.

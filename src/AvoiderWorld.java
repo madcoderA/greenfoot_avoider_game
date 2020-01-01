@@ -19,7 +19,7 @@ public class AvoiderWorld extends World {
         // Music Credit: http://www.newgrounds.com/audio/listen/504436 by T-balt
         bkgMusic.playLoop(); // Play the music
 
-        setPaintOrder(Eye.class, Avatar.class, Enemy.class, PowerItems.class, Score.class);
+        setPaintOrder(Eye.class, Avatar.class, Enemy.class, PowerItems.class);
         prepare();
         generateInitialStarField();
     }
@@ -100,7 +100,7 @@ public class AvoiderWorld extends World {
         if (score > nextLevel) {
             enemySpawnRate += 4;
             enemySpeed++;
-            cupcakeFrequency += 3;
+            cupcakeFrequency += 2;
             cloverFrequency += 3;
             healthFrequency += 1;
             nextLevel += 50;
@@ -116,7 +116,7 @@ public class AvoiderWorld extends World {
 
     private void prepare() {
         Avatar avatar = new Avatar();
-        addObject(avatar, 287, 232);
+        addObject(avatar, 450, 300);
         scoreBoard = new Score();
         addObject(scoreBoard, 70, 20);
     }

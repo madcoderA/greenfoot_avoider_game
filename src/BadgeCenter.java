@@ -73,5 +73,4 @@ public class BadgeCenter // Implemented as a Singleton
     private void awardBadge(String title) {
         badges.add(new Badge(title));
     }
-
 }
