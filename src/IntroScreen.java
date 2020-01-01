@@ -9,7 +9,7 @@ public class IntroScreen extends World
      */
     public IntroScreen()
     {
-        super(600, 400, 1);
+        super(900, 600, 1);
         startButton = addButton("Start Game", getWidth()/2, getHeight()*2/3);
         creditButton = addButton("Credits Screen", getWidth()/2, (getHeight()*2/3) + 40);
         storyButton = addButton("Story Screen", getWidth()/2, (getHeight()*2/3) + 80);
