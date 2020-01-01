@@ -19,7 +19,7 @@ public class AvoiderWorld extends World {
         // Music Credit: http://www.newgrounds.com/audio/listen/504436 by T-balt
         bkgMusic.playLoop(); // Play the music
 
-        setPaintOrder(Eye.class, Avatar.class, Enemy.class, PowerItems.class, Counter.class);
+        setPaintOrder(Eye.class, Avatar.class, Enemy.class, PowerItems.class, Score.class);
         prepare();
         generateInitialStarField();
     }

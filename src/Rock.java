@@ -2,14 +2,12 @@
  * Behavior implementation for Rock.
  * 
  * @author Jegors Čemisovs
- * @version 2019-12-31
+ * @version 2020-01-01
  */
 public class Rock extends PowerItems {
-    private BadgeCenter badgeCenter;
 
-    public Rock(int tX, int tY, int eT) {
-        super(tX, tY, eT);
-        badgeCenter = BadgeCenter.getInstance();
+    public Rock(int targetX, int targetY, int expireTime) {
+        super(targetX, targetY, expireTime);
     }
 
     protected double curveX(double f) {
@@ -17,14 +15,13 @@ public class Rock extends PowerItems {
     }
 
     protected double curveY(double f) {
-        // return Math.sin(f); // Best ease-in evah!
         return f * f * f;
     }
 
     protected void checkHitAvatar() {
         Avatar avatar = (Avatar) getOneIntersectingObject(Avatar.class);
         if (avatar != null) {
-            badgeCenter.hitRock();
+            BadgeCenter.getInstance().hitRock();
             avatar.sayAhhh();
             avatar.addHealth();
             getWorld().removeObject(this);

@@ -2,7 +2,7 @@
  * Behavior implementation for Clover.
  * 
  * @author Jegors Čemisovs
- * @version 2019-12-31
+ * @version 2020-01-01
  */
 import java.lang.Math;
 
