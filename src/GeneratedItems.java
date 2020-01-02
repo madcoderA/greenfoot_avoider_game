@@ -10,23 +10,17 @@ enum GeneratedItems {
   STAR(350) {
     @Override
     Actor getItem() {
-      final Star star = new Star();
-      final GreenfootImage image = star.getImage();
+      return new Star();
+    }
 
-      if (Greenfoot.getRandomNumber(1000) < 300) {
-        // this is a close bright star
-        star.setSpeed(3);
-        image.setTransparency(Greenfoot.getRandomNumber(25) + 225);
-        image.scale(4, 4);
-      } else {
-        // this is a further dim star
-        star.setSpeed(2);
-        image.setTransparency(Greenfoot.getRandomNumber(50) + 100);
-        image.scale(2, 2);
-      }
+    @Override
+    int getX() {
+      return 5 + Greenfoot.getRandomNumber(worldWidth - 10);
+    }
 
-      star.setImage(image);
-      return star;
+    @Override
+    int getY() {
+      return -2;
     }
   },
   ENEMY(20) {
@@ -34,11 +28,31 @@ enum GeneratedItems {
     Actor getItem() {
       return new Enemy();
     }
+
+    @Override
+    int getX() {
+      return Greenfoot.getRandomNumber(worldWidth - 20) + 10;
+    }
+
+    @Override
+    int getY() {
+      return -30;
+    }
+
+    @Override
+    void nextLevel() {
+      spawnRate += 4;
+    }
   },
   CUPCAKE(10) {
     @Override
     Actor getItem() {
       return new Cupcake(getTargetX(), getTargetY(), 100);
+    }
+
+    @Override
+    void nextLevel() {
+      spawnRate += 2;
     }
   },
   CLOVER(10) {
@@ -46,11 +60,21 @@ enum GeneratedItems {
     Actor getItem() {
       return new Clover(getTargetX(), getTargetY(), 100);
     }
+
+    @Override
+    void nextLevel() {
+      spawnRate += 2;
+    }
   },
   ROCK(1) {
     @Override
     Actor getItem() {
       return new Rock(getTargetX(), getTargetY(), 100);
+    }
+
+    @Override
+    void nextLevel() {
+      spawnRate += 1;
     }
   };
 
@@ -63,16 +87,19 @@ enum GeneratedItems {
     this.spawnRate = spawnRate;
   }
 
+  public boolean isGenerate() {
+    return Greenfoot.getRandomNumber(1000) < spawnRate;
+  }
+
   int getX() {
-    return Greenfoot.getRandomNumber(worldWidth - 20) + 10;
+    return Greenfoot.getRandomNumber(100) < 50 ? worldWidth + 20 : -20;
   }
 
   int getY() {
-    return -30;
+    return Greenfoot.getRandomNumber(worldHeight / 2) + 30;
   }
 
-  public boolean isGenerate() {
-    return Greenfoot.getRandomNumber(1000) < spawnRate;
+  void nextLevel() {
   }
 
   abstract Actor getItem();

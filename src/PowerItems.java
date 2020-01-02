@@ -27,7 +27,7 @@ public abstract class PowerItems extends SmoothMover {
      * of 0, but we need to know its original value for our easing equations.
      */
     protected double duration;
-    /* The counter variable records how many times this actorhas moved. */
+    /* The counter variable records how many times this actor has moved. */
     protected int counter;
 
     public PowerItems(int targetX, int targetY, int expireTime) {

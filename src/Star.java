@@ -20,6 +20,17 @@ public class Star extends Actor {
         final GreenfootImage image = new GreenfootImage(10, 10);
         image.setColor(Color.WHITE);
         image.fillOval(0, 0, 10, 10);
+        if (Greenfoot.getRandomNumber(1000) < 300) {
+          // this is a close bright star
+          speed = 3;
+          image.setTransparency(Greenfoot.getRandomNumber(25) + 225);
+          image.scale(4, 4);
+        } else {
+          // this is a further dim star
+          speed = 2;
+          image.setTransparency(Greenfoot.getRandomNumber(50) + 100);
+          image.scale(2, 2);
+        }
         setImage(image);
     }
 

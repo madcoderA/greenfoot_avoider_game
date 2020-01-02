@@ -13,12 +13,8 @@ public class AvoiderWorld extends World {
     private final static GreenfootSound backgroundMusic = new GreenfootSound("UFO_T-Balt.mp3");
 
     private Score scoreBoard;
-    private int enemySpawnRate = 20;
     private int enemySpeed = 1;
     private int nextLevel = 50;
-    private int cupcakeFrequency = 10;
-    private int cloverFrequency = 10;
-    private int healthFrequency = 1;
 
     public AvoiderWorld() {
         super(900, 600, 1, false);
@@ -43,97 +39,31 @@ public class AvoiderWorld extends World {
     }
 
     public void act() {
-        generateEnemies();
-        generateStars(-1);
-        generatePowerItems();
-        increaseLevel();
+        generateItems();
     }
 
     void generateItems() {
         for (GeneratedItems item : GeneratedItems.values()) {
             if (!item.isGenerate())
                 continue;
-            addObject(item.getItem(), item.getX(), item.getY());
+            Actor actor = item.getItem();
+            addObject(actor, item.getX(), item.getY());
             if (item == GeneratedItems.ENEMY) {
+                ((Enemy) actor).setSpeed(enemySpeed);
+                // Give us some points for facing yet another enemy
                 scoreBoard.addScore(1);
+                if (scoreBoard.getScore() > nextLevel) {
+                    levelUp();
+                }
             }
         }
     }
 
-    private void generateEnemies() {
-        // Randomly add enemies to the world
-        if (Greenfoot.getRandomNumber(1000) < enemySpawnRate) {
-            final Enemy enemy = new Enemy();
-            enemy.setSpeed(enemySpeed);
-            addObject(enemy, Greenfoot.getRandomNumber(getWidth() - 20) + 10, -30);
-            // Give us some points for facing yet another enemy
-            scoreBoard.addScore(1);
-        }
-    }
-
-    private void generateStars(int yLoc) {
-        // Create a moving background star field
-        if (Greenfoot.getRandomNumber(1000) < 350) {
-            final Star star = new Star();
-            final GreenfootImage image = star.getImage();
-            if (Greenfoot.getRandomNumber(1000) < 300) {
-                // this is a close bright star
-                star.setSpeed(3);
-                image.setTransparency(Greenfoot.getRandomNumber(25) + 225);
-                image.scale(4, 4);
-            } else {
-                // this is a further dim star
-                star.setSpeed(2);
-                image.setTransparency(Greenfoot.getRandomNumber(50) + 100);
-                image.scale(2, 2);
-            }
-            star.setImage(image);
-            addObject(star, Greenfoot.getRandomNumber(getWidth() - 20) + 10, yLoc);
-        }
-    }
-
-    private void generatePowerItems() {
-        generatePowerItem(0, cupcakeFrequency); // new Cupcake
-        generatePowerItem(1, cloverFrequency); // new Clover
-        generatePowerItem(2, healthFrequency); // new Health
-    }
-
-    private void generatePowerItem(int type, int freq) {
-        if (Greenfoot.getRandomNumber(1000) < freq) {
-            int targetX = Greenfoot.getRandomNumber(getWidth() - 80) + 40;
-            int targetY = Greenfoot.getRandomNumber(getHeight() / 2) + 20;
-            Actor powerItem = createPowerItem(type, targetX, targetY, 100);
-            if (Greenfoot.getRandomNumber(100) < 50) {
-                addObject(powerItem, getWidth() + 20, Greenfoot.getRandomNumber(getHeight() / 2) + 30);
-            } else {
-                addObject(powerItem, -20, Greenfoot.getRandomNumber(getHeight() / 2) + 30);
-            }
-        }
-    }
-
-    private Actor createPowerItem(int type, int targetX, int targetY, int expireTime) {
-        switch (type) {
-        case 0:
-            return new Cupcake(targetX, targetY, expireTime);
-        case 1:
-            return new Clover(targetX, targetY, expireTime);
-        case 2:
-            return new Rock(targetX, targetY, expireTime);
-        }
-        return null;
-    }
-
-    private void increaseLevel() {
-        final int score = scoreBoard.getScore();
-
-        if (score > nextLevel) {
-            enemySpawnRate += 4;
-            enemySpeed++;
-            cupcakeFrequency += 2;
-            cloverFrequency += 3;
-            healthFrequency += 1;
-            nextLevel += 50;
-        }
+    private void levelUp() {
+        ++enemySpeed;
+        nextLevel += 50;
+        for (GeneratedItems item : GeneratedItems.values())
+            item.nextLevel();
     }
 
     public void endGame() {
@@ -144,8 +74,12 @@ public class AvoiderWorld extends World {
     }
 
     private void generateInitialStarField() {
-        for (int i = getHeight(); i-- > 0;) {
-            generateStars(i);
+        for (int y = getHeight(); y-- > 0;) {
+            if (Greenfoot.getRandomNumber(1000) < 350) {
+                final Star star = new Star();
+                final int x = 5 + Greenfoot.getRandomNumber(getWidth() - 10);
+                addObject(star, x, y);
+            }
         }
     }
 }
