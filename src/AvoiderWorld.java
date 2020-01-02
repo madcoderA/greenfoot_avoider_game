@@ -38,6 +38,8 @@ public class AvoiderWorld extends World {
     }
 
     public void stopped() {
+        if (backgroundMusic.isPlaying())
+            backgroundMusic.playLoop();
     }
 
     public void act() {
@@ -85,18 +87,6 @@ public class AvoiderWorld extends World {
         generatePowerItem(2, healthFrequency); // new Health
     }
 
-    private Actor createPowerItem(int type, int targetX, int targetY, int expireTime) {
-        switch (type) {
-        case 0:
-            return new Cupcake(targetX, targetY, expireTime);
-        case 1:
-            return new Clover(targetX, targetY, expireTime);
-        case 2:
-            return new Rock(targetX, targetY, expireTime);
-        }
-        return null;
-    }
-
     private void generatePowerItem(int type, int freq) {
         if (Greenfoot.getRandomNumber(1000) < freq) {
             int targetX = Greenfoot.getRandomNumber(getWidth() - 80) + 40;
@@ -108,6 +98,18 @@ public class AvoiderWorld extends World {
                 addObject(powerItem, -20, Greenfoot.getRandomNumber(getHeight() / 2) + 30);
             }
         }
+    }
+
+    private Actor createPowerItem(int type, int targetX, int targetY, int expireTime) {
+        switch (type) {
+        case 0:
+            return new Cupcake(targetX, targetY, expireTime);
+        case 1:
+            return new Clover(targetX, targetY, expireTime);
+        case 2:
+            return new Rock(targetX, targetY, expireTime);
+        }
+        return null;
     }
 
     private void increaseLevel() {

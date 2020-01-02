@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class GameOver extends World {
     // Background music: "Disaster" by Lemonnade
-    // https://www.newgrounds.com/audio/listen/470536 
+    // https://www.newgrounds.com/audio/listen/470536
     private final static GreenfootSound backgroundMusic = new GreenfootSound("Disaster.mp3");
 
     /**
@@ -43,6 +43,11 @@ public class GameOver extends World {
      * objects and add them to the world.
      */
     private void prepare() {
+    }
+
+    public void stopped() {
+        if (backgroundMusic.isPlaying())
+            backgroundMusic.playLoop();
     }
 
     public void setPlayerHighScore(int s) {
