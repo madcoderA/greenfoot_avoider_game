@@ -1,5 +1,12 @@
 import greenfoot.*;
 
+/**
+ * The hero of the game
+ * 
+ * @author Michael Haungs
+ * @author Jegors Čemisovs
+ * @version 2020-01-01
+ */
 public class Avatar extends Actor {
     private int hitDelay = 50;
     private int nextImage = 0;
@@ -8,7 +15,7 @@ public class Avatar extends Actor {
     private int lagDelay = 0;
     private Eye leftEye;
     private Eye rightEye;
-    private BadgeCenter bc;
+    private BadgeCenter badgeCenter;
     private static GreenfootSound woot = new GreenfootSound("woot.wav");
     private static GreenfootSound ahhh = new GreenfootSound("ahhh.wav");
 
@@ -40,9 +47,10 @@ public class Avatar extends Actor {
     }
 
     public void checkForCollisions() {
-        Actor enemy = getOneIntersectingObject(Enemy.class);
+        Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
         if (hitDelay == 0 && enemy != null) { // If not empty, we hit an Enemy
-            bc.hitEnemy(); // Register hit with badge center
+            enemy.beHappy();
+            badgeCenter.hitEnemy(); // Register hit with badge center
             sayWoot();
             if (health == 0) {
                 AvoiderWorld world = (AvoiderWorld) getWorld();
@@ -69,7 +77,7 @@ public class Avatar extends Actor {
         rightEye = new Eye();
         w.addObject(leftEye, getX() - 10, getY() - 8);
         w.addObject(rightEye, getX() + 10, getY() - 8);
-        bc = BadgeCenter.getInstance();
+        badgeCenter = BadgeCenter.getInstance();
         // woot = new GreenfootSound("sounds/woot.wav");
         // ahhh = new GreenfootSound("sounds/ahhh.wav");
     }

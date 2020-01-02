@@ -7,7 +7,7 @@ import greenfoot.*;
  * 
  * @author Michael Haungs
  * @author Jegors Čemisovs
- * @version 2020-01-01
+ * @version 2020-01-02
  */
 public class Star extends Actor {
     private int twinkleTime = 0;
@@ -42,7 +42,7 @@ public class Star extends Actor {
 
     private void checkRemove() {
         final World world = getWorld();
-        if (getY() > world.getHeight() + 30) {
+        if (getY() > world.getHeight() + 10) {
             world.removeObject(this);
         }
     }
@@ -57,7 +57,7 @@ public class Star extends Actor {
             if (twinkleTime == 1) {
                 image.setTransparency(currentTransparency);
             }
-            twinkleTime = twinkleTime - 1;
+            --twinkleTime;
         } else {
             if (Greenfoot.getRandomNumber(10000) < 10) {
                 twinkleTime = 10;
