@@ -49,6 +49,17 @@ public class AvoiderWorld extends World {
         increaseLevel();
     }
 
+    void generateItems() {
+        for (GeneratedItems item : GeneratedItems.values()) {
+            if (!item.isGenerate())
+                continue;
+            addObject(item.getItem(), item.getX(), item.getY());
+            if (item == GeneratedItems.ENEMY) {
+                scoreBoard.addScore(1);
+            }
+        }
+    }
+
     private void generateEnemies() {
         // Randomly add enemies to the world
         if (Greenfoot.getRandomNumber(1000) < enemySpawnRate) {

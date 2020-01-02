@@ -1,7 +1,8 @@
 import greenfoot.*;
 
 /**
- * Enemies
+ * Enimies. The sheer evil of the smiley-faced villians is enought to crack 
+ * the bones of our skull-faced hero so you must avoid their touch at all cost.
  * 
  * @author Michael Haungs
  * @author Jegors Čemisovs
