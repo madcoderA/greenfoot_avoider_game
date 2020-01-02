@@ -21,17 +21,19 @@ public class IntroScreen extends World {
      */
     public IntroScreen() {
         super(900, 600, 1);
-        if (!backgroundMusic.isPlaying())
-            backgroundMusic.playLoop();
         startButton = addButton("Start Game", getWidth() / 2, getHeight() * 2 / 3);
         creditButton = addButton("Credits Screen", getWidth() / 2, (getHeight() * 2 / 3) + 40);
         storyButton = addButton("Story Screen", getWidth() / 2, (getHeight() * 2 / 3) + 80);
     }
 
     public void started() {
+        if (!backgroundMusic.isPlaying())
+            backgroundMusic.playLoop();
     }
 
     public void stopped() {
+        if (backgroundMusic.isPlaying())
+            backgroundMusic.stop();
     }
 
     public void act() {

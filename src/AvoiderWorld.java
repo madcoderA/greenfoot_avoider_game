@@ -39,7 +39,7 @@ public class AvoiderWorld extends World {
 
     public void stopped() {
         if (backgroundMusic.isPlaying())
-            backgroundMusic.playLoop();
+            backgroundMusic.stop();
     }
 
     public void act() {
