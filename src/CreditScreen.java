@@ -10,12 +10,11 @@ import greenfoot.*;
 public class CreditScreen extends World {
 
     public CreditScreen() {
-        super(600, 400, 1);
+        super(900, 600, 1);
     }
 
     public void act() {
-        if (Greenfoot.mouseClicked(this)) {
+        if (Greenfoot.mouseClicked(this)) 
             Greenfoot.setWorld(new IntroScreen());
-        }
     }
 }

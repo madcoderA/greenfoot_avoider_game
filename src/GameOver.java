@@ -17,7 +17,7 @@ public class GameOver extends World {
      * Constructor for objects of class AvoiderGameOverWorld.
      */
     public GameOver() {
-        super(600, 400, 1);
+        super(900, 600, 1);
         prepare();
         backgroundMusic.playLoop();
         // get the badges!

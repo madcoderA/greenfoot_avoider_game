@@ -9,7 +9,7 @@ import greenfoot.*;
 public class StoryScreen extends World {
 
     public StoryScreen() {
-        super(600, 400, 1);
+        super(900, 600, 1);
     }
 
     public void act() {
