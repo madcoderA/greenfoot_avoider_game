@@ -10,7 +10,7 @@ import greenfoot.*;
 public class IntroScreen extends World {
     // Background music: "Space Warning" by Zakhej
     // https://www.newgrounds.com/audio/listen/485972
-    private final static GreenfootSound backgroundMusic = new GreenfootSound("Space-warning.mp3");
+    private final static GreenfootSound backgroundMusic = new GreenfootSound("Hektik_Space.mp3");
 
     private Actor startButton;
     private Actor creditButton;
